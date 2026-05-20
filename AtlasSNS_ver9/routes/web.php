@@ -24,11 +24,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('top', [PostsController::class, 'index']);
+
+Route::post('/login', [UsersController::class, 'login']);
+   
 
 Route::get('profile', [ProfileController::class, 'profile']);
 
+
+
 Route::get('search', [UsersController::class, 'index']);
 
+
+
 Route::get('follow-list', [PostsController::class, 'index']);
+
+
+
+
 Route::get('follower-list', [PostsController::class, 'index']);
