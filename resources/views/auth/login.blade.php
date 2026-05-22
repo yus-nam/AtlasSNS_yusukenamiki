@@ -17,8 +17,6 @@
     
   </div>
 
-
-
   {!! Form::close() !!}
 
 </x-logout-layout>
