@@ -1,0 +1,35 @@
+@charset "utf-8";
+html{
+}
+body{
+}
+/* header */
+header{
+    background:#186AC9;
+}
+
+/* main content */
+#row{
+    display: flex;
+    flex-flow: row wrap;
+}
+#container{
+    flex: 0 0 80%;
+}
+#side-bar{
+    flex: 0 0 19%;
+    border-left: 1px solid #727272;
+}
+
+section{
+  background-color:#ccd8ff;
+  padding:50px 0;
+}
+
+
+div{
+  width:100px;
+  height:100px;
+  background-color:#4773ff;
+  margin:0 auto;
+}
