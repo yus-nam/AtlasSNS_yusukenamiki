@@ -4,7 +4,7 @@
   {!! Form::open(['url' => '/index']) !!}
 
   <div class="container">
-    <p>AtlasSNSへようこそ</p>
+    <p class="subtitle">AtlasSNSへようこそ</p>
 
         {{ Form::label('メールアドレス')}}
         {{ Form::text('email',null,['class' => 'input']) }}
