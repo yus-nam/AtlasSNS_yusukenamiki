@@ -8,7 +8,6 @@
 
     <div class="form-area">
 
-
         {{ Form::label('メールアドレス')}}
         {{ Form::text('email',null,['class' => 'input']) }}
         
@@ -17,8 +16,6 @@
 
         {{ Form::submit('ログイン',['class' => 'btn btn-danger']) }}
 
-    
-    
     </div>
 
 

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create']);
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('top');;
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('register', [RegisteredUserController::class, 'create']);
@@ -18,10 +18,9 @@ Route::middleware('guest')->group(function () {
     Route::post('added', [RegisteredUserController::class, 'added']);
 
 });
-
-Route::get('/dashboard', function () {
+// Route::get('/dashboard', function () {
     
-    // ログイン成功時のみ表示されるページ
-    return view('posts.index');
+//     // ログイン成功時のみ表示されるページ
+//     return view('posts.index');
 
-})->middleware('auth');
+// })->middleware('auth');

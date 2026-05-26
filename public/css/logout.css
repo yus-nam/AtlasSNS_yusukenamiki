@@ -5,8 +5,8 @@ html{
 }
 
 body{
-    height: 100%;
-    background-image: linear-gradient(180deg, #0A84FF 9%, #efdc09 91%);
+    /* height: 100%; */
+    background-image: linear-gradient(180deg, #0A84FF 10%, #faea05 90%);
     text-align: center;
     font-family: 'adobe clean', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'MS Pゴシック', 'MS PGothic', sans-serif;
     font-weight: bolder;
