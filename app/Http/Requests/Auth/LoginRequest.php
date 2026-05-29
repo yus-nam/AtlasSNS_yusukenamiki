@@ -28,11 +28,24 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string'],
+            // 'username' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'exists:users,email'],
             'password' => ['required', 'string'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'email.required' => 'メールアドレスは必ず入力してください',
+            'email.email' => '不正なフォーマットです',
+            'email.exists' => 'メールアドレスが存在しません',
+            'password.required' => 'パスワードは必ず入力してください',
+        ];
+    }
+
+
+
 
     /**
      * Attempt to authenticate the request's credentials.

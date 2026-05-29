@@ -12,15 +12,8 @@ class UsersController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-
-
         // return view('post.index');
     }
-
-
-
-
-
 
     public function search(){
         return view('users.search');
