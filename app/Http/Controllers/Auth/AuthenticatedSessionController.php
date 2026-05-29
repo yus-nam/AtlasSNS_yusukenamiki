@@ -25,30 +25,43 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        // $request->authenticate();
+        // try {
+        //     $request->authenticate();  // ユーザーの認証
+        // } catch (AuthenticationException $e) {
+        //     return back()->withErrors([
+        //         'email' => 'メールアドレスまたはパスワードが間違っています。',
+        //     ]);
+        // }
 
-        // $request->session()->regenerate();
+        // $request->session()->regenerate();  // セッションを再生成
 
-        // return redirect()->intended('top');
+        // // 認証成功の確認
+        // dd('認証に成功しました。');
+
+        // return redirect()->intended(RouteServiceProvider::HOME);  // 認証成功時のリダイレクト
 
 
-        try {
-            $request->authenticate();  // ユーザーの認証
-        } catch (AuthenticationException $e) {
-            return back()->withErrors([
-                'email' => 'メールアドレスまたはパスワードが間違っています。',
-            ]);
+        {
+        // バリデーション
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // 認証の試行
+        if (Auth::attempt($request->only('email', 'password'))) {
+            // 認証成功した場合、セッションを再生成
+            $request->session()->regenerate();
+
+            // index（トップ）へリダイレクト
+            return redirect('/index');
         }
 
-        $request->session()->regenerate();  // セッションを再生成
-
-        return redirect()->intended(RouteServiceProvider::HOME);  // 認証成功時のリダイレクト
-
-
-
-
-
-
+        // 認証失敗時のエラーメッセージ
+        return back()->withErrors([
+            'email' => 'メールアドレスまたはパスワードが正しくありません。',
+        ]);
+    }
 
 
 
