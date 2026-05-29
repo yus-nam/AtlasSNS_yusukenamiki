@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         // return redirect()->intended(RouteServiceProvider::HOME);  // 認証成功時のリダイレクト
-        dd('ここにきてる');
+        // dd('ここにきてる');
 
         {
         // バリデーション
