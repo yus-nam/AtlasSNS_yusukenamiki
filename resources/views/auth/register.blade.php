@@ -1,6 +1,7 @@
 <x-logout-layout>
     <!-- 適切なURLを入力してください -->
-{!! Form::open(['url' => 'added.blade.php']) !!}
+<!-- {!! Form::open(['url' => 'added.blade.php']) !!} -->
+{!! Form::open(['url' => 'register.blade.php']) !!}
 
 <h2 href="regist">新規ユーザー登録</h2>
 
