@@ -36,11 +36,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password), //ハッシュ化したパスワードを代入
         ]);
 
-        return redirect('added');
+        // return redirect('added');
+        return redirect()->route('added');
     }
 
     public function added(): View
     {
-        return view('auth.added');
+        return view('auth.added'); // authフォルダの中にあるadded.blade.phpを返す
     }
 }

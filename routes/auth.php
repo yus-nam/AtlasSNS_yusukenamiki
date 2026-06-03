@@ -14,8 +14,8 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create']);
     Route::post('register', [RegisteredUserController::class, 'store']);
 
-    Route::get('added', [RegisteredUserController::class, 'added']);
-    Route::post('added', [RegisteredUserController::class, 'added']);
+    Route::get('added', [RegisteredUserController::class, 'added'])->name('added');
+    // Route::post('added', [RegisteredUserController::class, 'added']);
 
 });
 // Route::get('/dashboard', function () {
