@@ -1,7 +1,9 @@
 @charset "utf-8";
 html{
+    width: 100%;
 }
 body{
+    width: 100%;
 }
 /* header */
 header{
@@ -32,4 +34,8 @@ div{
   height:100px;
   background-color:#4773ff;
   margin:0 auto;
+}
+
+.container {
+    width: 100%;
 }

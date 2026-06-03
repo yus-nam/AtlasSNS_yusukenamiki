@@ -18,9 +18,9 @@ Route::middleware('guest')->group(function () {
     // Route::post('added', [RegisteredUserController::class, 'added']);
 
 });
-// Route::get('/dashboard', function () {
+Route::get('/dashboard', function () {
     
-//     // ログイン成功時のみ表示されるページ
-//     return view('posts.index');
+    // ログイン成功時のみ表示されるページ
+    return view('posts.index');
 
-// })->middleware('auth');
+})->middleware('auth');

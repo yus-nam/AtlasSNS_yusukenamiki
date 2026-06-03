@@ -20,17 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-    
-//     // ログイン成功時のみ表示されるページ
-//     return view('posts.index');
-
-// })->middleware('auth');
-
 Route::get('top', [PostsController::class, 'index']);
 
 Route::post('/login', [UsersController::class, 'login']);
-   
+
 Route::get('profile', [ProfileController::class, 'profile']);
 
 Route::get('search', [UsersController::class, 'index']);
