@@ -57,3 +57,14 @@ p a:hover{
     cursor: pointer;
 }
 
+.added {
+    color: white;
+    font-size: 3.25rem;
+    
+}
+
+.added.added-second {
+    font-weight: 100;
+    font-size: 3.3rem;
+    letter-spacing:  -0.5;
+}
