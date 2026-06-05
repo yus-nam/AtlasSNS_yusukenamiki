@@ -11,17 +11,17 @@
         {{ Form::label('メールアドレス')}}
         {{ Form::text('email',null,['class' => 'input']) }}
         @error('email')
-            <p style="font-size:1.75rem">{{ $message }}</p>
+            <p class="error-message">{{ $message }}</p>
         @enderror
         
         {{ Form::label('パスワード')}}
         {{ Form::password('password',['class' => 'input']) }}
         @error('password')
-            <p style="font-size:1.75rem">{{ $message }}</p>
+            <p class="error-message">{{ $message }}</p>
         @enderror
 
         @error('login')
-            <p style="font-size:1.75rem">{{ $message }}</p>
+            <p class="error-message">{{ $message }}</p>
         @enderror
 
         {{ Form::submit('ログイン',['class' => 'btn btn-danger']) }}

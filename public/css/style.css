@@ -1,16 +1,31 @@
 @charset "utf-8";
 html{
     width: 100%;
+    background-color: grey;
 }
 body{
     width: 100%;
-    background-color: burlywood;
+    background-color: #fff;
 }
+
 /* header */
 header{
-    /* position: fixed; */
-    background:#186AC9;
+    flex:  0 0 80%;
+    margin: 0 20px;
+    background-color: #186AC9;
 }
+
+.logo {
+    width: 110px;
+    height: auto;
+    vertical-align: top;
+    margin-left: 20px;
+}
+
+.login-user {
+    float: right;
+}
+
 
 /* main content */
 #row{
@@ -19,23 +34,24 @@ header{
 }
 #container{
     flex: 0 0 80%;
+    background-color: purple;
+
 }
 #side-bar{
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }
 
-section{
-  background-color:#ccd8ff;
+ section{
+  background-color :#ccd8ff;
   padding:50px 0;
 }
-
 
 div{
   width: auto;
   /* width: 100px; */
   height:100px;
-  background-color: #4773ff;
+  background-color: none;
   margin:0 auto;
 }
 
@@ -45,10 +61,42 @@ div{
 
 
 .btn-type {
-    margin-right: 140px;
-    background: none; /* 背景を削除 */
-    border: none; /* ボーダーを削除 */
-    padding: 0; /* パディングをリセット */
-    cursor: pointer; /* カーソルをポインタに変更 */
+    margin-right: 50px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    border-radius: solid 4px none;
+    padding: 0;
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
+.btn-type.post {
+    background-image: url('/images/post.png');
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btn-type.edit {
+    background-image: url('/images/edit.png');
+    background-size: 40px;
+}
+
+.btn-type.edit:hover {
+    background-image: url('/images/edit_h.png');
+    background-size: 40px;
+}
+
+.btn-type.trash {
+    background-image: url('/images/trash.png'); 
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btn-type.trash:hover {
+    background-image: url('/images/trash-h.png');
+}
