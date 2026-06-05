@@ -4,9 +4,11 @@ html{
 }
 body{
     width: 100%;
+    background-color: burlywood;
 }
 /* header */
 header{
+    /* position: fixed; */
     background:#186AC9;
 }
 
@@ -30,12 +32,23 @@ section{
 
 
 div{
-  width:100px;
+  width: auto;
+  /* width: 100px; */
   height:100px;
-  background-color:#4773ff;
+  background-color: #4773ff;
   margin:0 auto;
 }
 
 .container {
     width: 100%;
 }
+
+
+.btn-type {
+    margin-right: 140px;
+    background: none; /* 背景を削除 */
+    border: none; /* ボーダーを削除 */
+    padding: 0; /* パディングをリセット */
+    cursor: pointer; /* カーソルをポインタに変更 */
+}
+
