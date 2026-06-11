@@ -1,6 +1,6 @@
         <div id="head">
             <!-- <h1><a href="#"><img src="images/atlas.png" class="logo"></a></h1> -->
-            <h1><a href="{{ url()->current() }}"><img src="images/atlas.png" class="logo"></a></h1>
+            <h1><a href="{{ url()->current() }}"><img src="/images/atlas.png" class="logo"></a></h1>
 
             <div id="">
                 <div id="">

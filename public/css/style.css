@@ -28,7 +28,6 @@ header{
     background: none; /* 背景を透明にする */
     border: none; /* ボーダーを削除 */
     cursor: pointer; /* カーソルをポインターに */
-    color: #000;
     transform: scaleX(2);
 }
 
@@ -38,6 +37,7 @@ header{
     list-style-type: none; /* リストスタイルをなしに */
     padding: 0; /* パディングをゼロ */
     margin: 0; /* マージンをゼロ */
+    z-index: 1;
 }
 
 .login-user {
@@ -51,7 +51,7 @@ header{
 }
 #container{
     flex: 0 0 80%;
-    background-color: white;
+    background-color: rebeccapurple;
 
 }
 #side-bar{
@@ -63,7 +63,6 @@ header{
   background-color :#ccd8ff;
   padding:50px 0;
 }
-
 
 
 div{
