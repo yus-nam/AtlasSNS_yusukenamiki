@@ -28,11 +28,14 @@
   <header>
     @include('layouts.navigation')
   </header>
+
   <!-- Page Content -->
   <div id="row">
+
     <div id="container">
       {{ $slot }}
     </div>
+    
     <div id="side-bar">
       <div id="confirm">
         <p>〇〇さんの</p>
@@ -49,12 +52,19 @@
       </div>
       <p class="btn"><a href="">ユーザー検索</a></p>
     </div>
+
   </div>
+  
+
   <footer>
   </footer>
+  
   <script src="{{ asset('js/app.js') }}"></script>
+
   <script src="JavaScriptファイルのURL"></script>
+  
   <script src="JavaScriptファイルのURL"></script>
+
 </body>
 
 </html>

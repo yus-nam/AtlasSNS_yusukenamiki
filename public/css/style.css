@@ -13,6 +13,7 @@ header{
     flex:  0 0 80%;
     margin: 0 20px;
     background-color: #186AC9;
+    color: white;
 }
 
 .logo {
@@ -22,10 +23,26 @@ header{
     margin-left: 20px;
 }
 
+.menu-toggle {
+    font-size: 18px; /* サイズを変更 */
+    background: none; /* 背景を透明にする */
+    border: none; /* ボーダーを削除 */
+    cursor: pointer; /* カーソルをポインターに */
+    color: #000;
+    transform: scaleX(2);
+}
+
+.menu-items {
+    font-size: 24px;
+    display: none; /* 初期状態でメニューは非表示 */
+    list-style-type: none; /* リストスタイルをなしに */
+    padding: 0; /* パディングをゼロ */
+    margin: 0; /* マージンをゼロ */
+}
+
 .login-user {
     float: right;
 }
-
 
 /* main content */
 #row{
@@ -34,7 +51,7 @@ header{
 }
 #container{
     flex: 0 0 80%;
-    background-color: lightsalmon;
+    background-color: white;
 
 }
 #side-bar{
@@ -46,6 +63,8 @@ header{
   background-color :#ccd8ff;
   padding:50px 0;
 }
+
+
 
 div{
   width: auto;

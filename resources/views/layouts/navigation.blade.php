@@ -6,10 +6,13 @@
                 <div id="">
                     <p class="login-user">〇〇さん</p>
                 </div>
-                <ul>
-                    <li><a href="">ホーム</a></li>
-                    <li><a href="">プロフィール</a></li>
-                    <li><a href="login">ログアウト</a></li>
-                </ul>
+                <div class="hamburger-menu">
+                    <button class="menu-toggle under">V</button>
+                    <ul class="menu-items">
+                        <li><a href="index">ホーム</a></li>
+                        <li><a href="profile">プロフィール編集</a></li>
+                        <li><a href="login">ログアウト</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
