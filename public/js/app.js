@@ -43,11 +43,26 @@
 
 
 // ここから下が追記した部分
-   document.querySelector('.menu-toggle').addEventListener('click', function() {
-       const menu = document.querySelector('.menu-items');
-       menu.style.display = (menu.style.display === 'block') ? 'none' : 'block'; // メニューの表示・非表示を切り替え
-   });
-   
+// ハンバーガーメニュー部分
+//    document.querySelector('.menu-toggle').addEventListener('click', function() {
+//        const menu = document.querySelector('.menu-items');
+//        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block'; // メニューの表示・非表示を切り替え
+//    });
+
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    const menu = document.querySelector('.menu-items');
+
+    // メニューの表示・非表示を切り替え
+    if (menu.style.display === 'block') {
+        menu.style.display = 'none'; // メニューを隠す
+        this.classList.remove('is-active'); // クラスを削除して「V」に戻す
+        this.innerText = 'V'; // テキストを戻す
+    } else {
+        menu.style.display = 'block'; // メニューを表示
+        this.classList.add('is-active'); // クラスを追加して「Λ」に変える
+        this.innerText = 'Λ'; // テキストを「Λ」に変更
+    }
+});
 
 
 

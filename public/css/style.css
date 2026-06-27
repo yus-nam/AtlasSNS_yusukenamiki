@@ -1,11 +1,11 @@
 @charset "utf-8";
 html{
     width: 100%;
-    background-color: grey;
+    background-color: burlywood;
 }
 body{
     width: 100%;
-    background-color: #fff;
+    background-color: #f0f0f0;
 }
 
 /* header */
@@ -17,19 +17,40 @@ header{
 }
 
 .logo {
-    width: 110px;
+    display: block;
+    width: 120px;
     height: auto;
-    vertical-align: top;
     margin-left: 20px;
+    padding: 0;
 }
 
+.login-user {
+    float: right;
+    font-size: 2.4rem;
+    justify-content: center;
+}
+
+.hamburger-menu {
+    float: right;
+    width: 400px;
+    height: 400px;
+}
+
+/* navigation部分はここから */
 .menu-toggle {
     font-size: 18px; /* サイズを変更 */
     background: none; /* 背景を透明にする */
     border: none; /* ボーダーを削除 */
     cursor: pointer; /* カーソルをポインターに */
-    transform: scaleX(2);
+    transform: scaleX(2); /* 横に2倍引き伸ばす */
+    transition: transform 0.3s; /* アニメーションを追加 */
 }
+.menu-toggle.is-active {
+    /* アクティブ時のスタイル、アイコンが変わる */
+    transform: rotate(180deg); /* 180度回転で「Λ」に見える */
+    transform: scaleX(2); /* 横に2倍引き伸ばす */
+}
+
 
 .menu-items {
     font-size: 24px;
@@ -38,25 +59,48 @@ header{
     padding: 0; /* パディングをゼロ */
     margin: 0; /* マージンをゼロ */
     z-index: 1;
+    background-color: #fff;
+    text-align: center;
 }
 
-.login-user {
-    float: right;
+.menu-items a {
+    /* color: #717375; */
+    /* color: #6C676E; */
+    color: #8A8C8E;
 }
+
+.menu-items li:hover{
+    background-color: #01297E;
+}
+
+.menu-items li:hover a {
+    text-decoration: none;
+    color: white;
+}
+/* navigation部分はここまで */
+
+
+
+
+
 
 /* main content */
 #row{
     display: flex;
     flex-flow: row wrap;
 }
+
 #container{
     flex: 0 0 80%;
-    background-color: rebeccapurple;
+    height: 60px;
+    background-color: rgb(184, 182, 186);
 
 }
+
 #side-bar{
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+    height: 300px;
 }
 
  section{
@@ -117,4 +161,16 @@ div{
 
 .btn-type.trash:hover {
     background-image: url('/images/trash-h.png');
+}
+
+.btn.btn-link {
+    color: white;
+    background-color: #0456CE;
+    border-radius: 400px solid #0456CE;
+}
+
+.btn.btn-link:hover {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;   
 }

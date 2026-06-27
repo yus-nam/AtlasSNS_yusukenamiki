@@ -37,23 +37,37 @@
     </div>
     
     <div id="side-bar">
+
       <div id="confirm">
+
         <p>〇〇さんの</p>
-        <div>
+        
+        <div class="follow">
           <p>フォロー数</p>
           <p>〇〇名</p> <!-- 数字 -->
         </div>
-        <p class="btn"><a href="">フォローリスト</a></p>
-        <div>
+        <a href="/follows/followList" class="btn btn-link">フォローリスト</a>
+
+        <div class="follower">
           <p>フォロワー数</p>
           <p>〇〇名</p> <!-- 数字 -->
         </div>
-        <p class="btn"><a href="">フォロワーリスト</a></p>
+        <a href="/follows/followerList" class="btn btn-link">フォロワーリスト</a>
+
       </div>
-      <p class="btn"><a href="">ユーザー検索</a></p>
+      
+      <a href="/users/search" class="btn btn-link">ユーザー検索</a>
+    
     </div>
 
+
+
+
   </div>
+
+
+
+
   
 
   <footer>

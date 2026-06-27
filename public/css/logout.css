@@ -16,10 +16,9 @@ div{
   margin-bottom:20px;
 }
 
-.form-area {
-    /* background-color: blueviolet; */
-}
-
+/* .form-area {
+    background-color: violet;
+} */
 
 label{
     color: white;
@@ -29,6 +28,10 @@ label{
 label, input{
   display:block;
   margin: 10px auto;
+}
+
+h2 {
+    color: white;
 }
 
 p {
