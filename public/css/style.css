@@ -166,7 +166,6 @@ div{
 .btn.btn-link {
     color: white;
     background-color: #0456CE;
-    border-radius: 400px solid #0456CE;
 }
 
 .btn.btn-link:hover {
