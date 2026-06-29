@@ -1,6 +1,6 @@
 <x-logout-layout>
   <div id="clear">
-    <p class="added">さん</p>
+    <p class="added">{{ session('username') }}さん</p>
     <p class="added">ようこそ！AtlasSNSへ！</p>
 
     <br>

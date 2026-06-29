@@ -44,13 +44,13 @@
         
         <div class="follow">
           <p>フォロー数</p>
-          <p>{{ $followingCount ??  }} 名</p> <!-- 数字 -->
+          <p>〇〇名</p> <!-- 数字 -->
         </div>
         <a href="/follows/followList" class="btn btn-link">フォローリスト</a>
 
         <div class="follower">
           <p>フォロワー数</p>
-          <p>{{ $followerCount ??  }} 名</p> <!-- 数字 -->
+          <p>〇〇名</p> <!-- 数字 -->
         </div>
         <a href="/follows/followerList" class="btn btn-link">フォロワーリスト</a>
 

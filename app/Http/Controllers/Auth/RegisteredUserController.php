@@ -36,6 +36,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password), //ハッシュ化したパスワードを代入
         ]);
 
+        // 登録成功の場合にユーザ名をセッションに保存
+       session(['username' => $request->input('username')]);
+
         // return redirect('added');
         return redirect()->route('added');
     }
