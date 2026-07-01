@@ -40,6 +40,9 @@ class AuthenticatedSessionController extends Controller
 
                 /** 追記箇所. ここから **/
 
+                //現在ログインしているユーザを取得
+                $user = Auth::user();
+
                 // フォロワー数とフォロー数を取得
                 $followingsCount = $user->followings()->count();
                 $followersCount = $user->followers()->count();
@@ -49,6 +52,11 @@ class AuthenticatedSessionController extends Controller
                     'followersCount' => $followersCount,
                 ]);
 
+
+                session([
+                    'followingsCount' => $followingsCount,
+                    'followersCount' => $followersCount,
+                ]);
 
                 /** 追記箇所. ここまで **/
 
@@ -62,9 +70,21 @@ class AuthenticatedSessionController extends Controller
                 'email' => 'メールアドレスまたはパスワードが正しくありません。',
             ]);
         }
+    }
 
+    public function followUser($userId)
+    {
+        $user = Auth::user();
 
+        // フォローロジック
+        $userToFollow = User::find($userId);
+        $user->followings()->attach($userToFollow);
 
+        // フォロワー数を再取得してセッションを更新
+        $followersCount = $userToFollow->followers()->count();
+        session(['followersCount' => $followersCount]);
+
+        return redirect()->back();
     }
 
 }
