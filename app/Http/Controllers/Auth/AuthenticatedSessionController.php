@@ -25,9 +25,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        // return redirect()->intended(RouteServiceProvider::HOME);  // 認証成功時のリダイレクト
-        // dd('ここにきてる');
-
+        
         {
         // バリデーション
             // $request->validate([
@@ -39,6 +37,21 @@ class AuthenticatedSessionController extends Controller
             if (Auth::attempt($request->only('email', 'password'))) {
                 // 認証成功した場合、セッションを再生成
                 $request->session()->regenerate();
+
+                /** 追記箇所. ここから **/
+
+                // フォロワー数とフォロー数を取得
+                $followingsCount = $user->followings()->count();
+                $followersCount = $user->followers()->count();
+
+                session([
+                    'followingsCount' => $followingsCount,
+                    'followersCount' => $followersCount,
+                ]);
+
+
+                /** 追記箇所. ここまで **/
+
 
                 // index（トップ）へリダイレクト
                 return redirect('/index');
