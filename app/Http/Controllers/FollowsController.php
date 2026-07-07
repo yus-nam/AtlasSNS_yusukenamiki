@@ -11,33 +11,33 @@ use Illuminate\Support\Facades\Auth;
 class FollowsController extends Controller
 {
     //
+    // public function followList() {
+       
+    //     $user = Auth::user();
+
+    //     $followingCount = $user->followings()->count();
+    //     $followerCount = $user->followers()->count();
+
+    //     return view('login', compact('followingCount', 'followerCount'));
+    // }
+
+
     public function followList() {
-        // return view('follows.followList');
-        public function index() {
-            
-        $user = Auth::user();
+       $user = Auth::user();
+       $followingCount = $user->following()->count();
+       $followerCount = $user->followers()->count();
+       return view('follows.followList', compact('followingCount', 'followerCount'));
+   }
 
-        $followingCount = $user->followings()->count();
-        $followerCount = $user->followers()->count();
+    // public function followerList(){
+    //     return view('follows.followerList');
+    // }
 
-        return view('login', compact('followingCount', 'followerCount'));
+    public function followerList() {
+       $user = Auth::user();
+       $followers = $user->followers; // フォロワーリストを取得
+       return view('follows.followerList', compact('followers'));
     }
-
-
-
-
-
-
-
-
-
-
-
-    public function followerList(){
-        return view('follows.followerList');
-    }
-
-
 
 
 

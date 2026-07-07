@@ -32,4 +32,14 @@ Route::get('follow-list', [PostsController::class, 'index']);
 
 Route::get('follower-list', [PostsController::class, 'index']);
 
+Route::post('follow/{id}', [FollowsController::class, 'follow'])->name('follow');
+
+Route::post('unfollow/{id}', [FollowsController::class, 'unfollow'])->name('unfollow');
+
+Route::get('followers/{id}', [ProfileController::class, 'followerList'])->name('follower.list');
+
+Route::get('following/{id}', [ProfileController::class, 'followingList'])->name('following.list');
+
+
+
 require __DIR__ . '/auth.php';
