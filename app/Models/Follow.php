@@ -14,17 +14,22 @@ class Follow extends Model
         'following_id',
     ];
 
-    // フォローしたユーザー
+    /** 以下追記 */
+    protected $table = 'follows';
+
+
+    // フォロワーを取得
     public function follower()
     {
-        return $this->belongsTo(User::class, 'follower_id');
+        return $this->belongsTo(User::class, 'follower_id'); // フォロワーはUserモデルへの一つの関連
     }
 
-    // フォローされたユーザー
+    // フォローされたユーザーを取得
     public function following()
     {
-        return $this->belongsTo(User::class, 'following_id');
+        return $this->belongsTo(User::class, 'following_id'); // フォローされたユーザーはUserモデルへの一つの関連
     }
+
 
 
 
