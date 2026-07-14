@@ -40,7 +40,7 @@ class User extends Authenticatable
     // 自分がフォローしているレコード
     public function followings()
     {
-        return $this->belongsToMany(User::class, 'follows', 'followering_id', 'followed_id');
+        return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id');
     }
 
     // 自分をフォローしているレコード

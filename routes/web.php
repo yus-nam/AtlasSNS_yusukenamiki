@@ -33,9 +33,9 @@ Route::get('search', [UsersController::class, 'index']);
 
 // Route::get('follower-list', [PostsController::class, 'index']);
 
-Route::get('/follows/followlist', [FollowsController::class, 'followList'])->name('followList');
+Route::get('/follows/followList', [FollowsController::class, 'followList'])->name('followList');
 
-Route::get('/follows/followerlist', [FollowsController::class, 'followerList'])->name('followerList');
+Route::get('/follows/followerList', [FollowsController::class, 'followerList'])->name('followerList');
 
 
 
