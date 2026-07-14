@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\FollowsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,9 +29,15 @@ Route::get('profile', [ProfileController::class, 'profile']);
 
 Route::get('search', [UsersController::class, 'index']);
 
-Route::get('follow-list', [PostsController::class, 'index']);
+// Route::get('follow-list', [PostsController::class, 'index']);
 
-Route::get('follower-list', [PostsController::class, 'index']);
+// Route::get('follower-list', [PostsController::class, 'index']);
+
+Route::get('/follows/followlist', [FollowsController::class, 'followList'])->name('followList');
+
+Route::get('/follows/followerlist', [FollowsController::class, 'followerList'])->name('followerList');
+
+
 
 Route::post('follow/{id}', [FollowsController::class, 'follow'])->name('follow');
 

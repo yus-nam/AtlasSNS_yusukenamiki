@@ -14,8 +14,5 @@ class PostsController extends Controller
     //   $posts = Post::get();
     //   return view('yyyy', compact('posts'));
     // }
-
-
-
     
 }
