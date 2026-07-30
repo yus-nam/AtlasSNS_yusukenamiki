@@ -66,3 +66,32 @@ document.querySelector('.menu-toggle').addEventListener('click', function() {
 
 
 
+//  さらに追記した分 
+ 
+    document.querySelectorAll('.unfollow-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const userId = this.dataset.userId;
+
+            fetch(`/unfollow`, { // フォロー解除のリクエストを送るエンドポイント
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // CSRFトークンをヘッダーに追加
+                },
+                body: JSON.stringify({ followed_id: userId })
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                // 成功したらリストから削除する場合
+                this.closest('li').remove(); // リストから該当のユーザーを削除
+              }
+            });
+        });
+    });
+
+
+
+
+
+

@@ -38,7 +38,6 @@ Route::get('/follows/followList', [FollowsController::class, 'followList'])->nam
 Route::get('/follows/followerList', [FollowsController::class, 'followerList'])->name('followerList');
 
 
-
 Route::post('follow/{id}', [FollowsController::class, 'follow'])->name('follow');
 
 Route::post('unfollow/{id}', [FollowsController::class, 'unfollow'])->name('unfollow');

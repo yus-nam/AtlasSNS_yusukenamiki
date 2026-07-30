@@ -4,10 +4,20 @@
   <h2>機能を実装していきましょう。</h2>
 
   <h2>フォローしている人数: {{ $followingCount }}</h2>
+
+  <!-- @dd($following) -->
+  
   <ul>
     @foreach ($following as $followedUser)
-        <li>{{ $followedUser->name }}</li>
+        <li>
+            {{ $followedUser->name }}
+            <button class="unfollow-button" data-user-id="{{ $followedUser->id }}">
+                フォロー解除
+            </button>
+        </li>
     @endforeach
   </ul>
+
+
 
 </x-login-layout>

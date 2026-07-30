@@ -1,11 +1,12 @@
 @charset "utf-8";
 html{
     width: 100%;
-    background-color: burlywood;
+    background-color: azure;
 }
 body{
     width: 100%;
-    background-color: #f0f0f0;
+    background-color: #d68787;
+    height: auto;
 }
 
 /* header */

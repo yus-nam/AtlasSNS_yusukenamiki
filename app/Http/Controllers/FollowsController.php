@@ -7,12 +7,16 @@ use App\Models\Follow;
 use Illuminate\Support\Facades\Auth;
 
 
-
-
 class FollowsController extends Controller
 {
     public function followList() {
         $user = Auth::user();
+
+        if ($user === null) {
+        // ログインページにリダイレクトするか、エラーメッセージを表示する
+            return redirect()->route('login')->with('error', 'ログインが必要です。');
+        }
+
 
         // ユーザーがフォローしている数
         $followingCount = $user->followings()->count(); 
@@ -21,8 +25,10 @@ class FollowsController extends Controller
 
         $following = $user->followings()->get();
 
+        $followingIds = $following->pluck('id')->toArray();
+
         // フォローリストビューファイルへデータを送信
-        return view('follows.followList', compact('followingCount', 'followerCount', 'following'));
+        return view('follows.followList', compact('followingCount', 'followerCount', 'following', 'followingIds'));
     }
 
 
