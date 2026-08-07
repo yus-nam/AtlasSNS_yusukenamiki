@@ -12,12 +12,6 @@ class FollowsController extends Controller
     public function followList() {
         $user = Auth::user();
 
-        if ($user === null) {
-        // ログインページにリダイレクトするか、エラーメッセージを表示する
-            return redirect()->route('login')->with('error', 'ログインが必要です。');
-        }
-
-
         // ユーザーがフォローしている数
         $followingCount = $user->followings()->count(); 
         // ユーザーのフォロワー数
@@ -31,23 +25,23 @@ class FollowsController extends Controller
         return view('follows.followList', compact('followingCount', 'followerCount', 'following', 'followingIds'));
     }
 
-
     public function followerList() {
         $user = Auth::user();
 
         // ユーザーがフォローしている数
         $followingCount = $user->followings()->count(); 
+        
         // ユーザーのフォロワー数
         $followerCount = $user->followers()->count();
 
         $followers = $user->followers()->get();
 
-
-        return view('follows.followerList', compact('followingCount', 'followerCount', 'followers'));
+        //フォロワーのID一覧を取得
+        $followerIds = $followers->pluck('follower_id')->toArray();
+        
+        // フォロワーリストビューファイルへデータを送信
+        return view('follows.followerList', compact('followingCount', 'followerCount', 'followers', 'followerIds'));
     }
-
-
-
 
 
 }

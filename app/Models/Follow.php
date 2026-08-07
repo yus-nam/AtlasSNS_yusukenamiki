@@ -30,10 +30,4 @@ class Follow extends Model
         return $this->belongsTo(User::class, 'following_id'); // フォローされたユーザーはUserモデルへの一つの関連
     }
 
-
-
-
-
-
-
 }
