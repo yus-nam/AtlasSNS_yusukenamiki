@@ -1,11 +1,11 @@
 @charset "utf-8";
 html{
     width: 100%;
-    background-color: azure;
+    background-color: whitesmoke;
 }
 body{
     width: 100%;
-    background-color: #d68787;
+    background-color: mintcream;
     height: auto;
 }
 
@@ -65,8 +65,6 @@ header{
 }
 
 .menu-items a {
-    /* color: #717375; */
-    /* color: #6C676E; */
     color: #8A8C8E;
 }
 
@@ -94,7 +92,7 @@ header{
 #container{
     flex: 0 0 80%;
     height: 60px;
-    background-color: rgb(184, 182, 186);
+    background-color: white;
 
 }
 

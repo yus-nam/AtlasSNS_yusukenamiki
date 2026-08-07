@@ -15,6 +15,21 @@ class PostsController extends Controller
     //   return view('yyyy', compact('posts'));
     // }
 
+    // 2. データを保存する
+    public function store(Request $request)
+    {
+        // 入力値のチェック（バリデーション）
+        $validated = $request->validate([
+            
+            'body' => 'required|max:150',
+        ]);
+
+        // データベースへ保存
+        Post::create($validated);
+
+        // 保存後、一覧画面などにリダイレクト
+        return redirect('/posts')->with('success', '投稿が完了しました');
+    }
 
 
 
@@ -22,7 +37,5 @@ class PostsController extends Controller
 
 
 
-
-    
     
 }
