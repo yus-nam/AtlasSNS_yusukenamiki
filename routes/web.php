@@ -23,24 +23,29 @@ Route::get('/', function () {
 
 Route::get('top', [PostsController::class, 'index']);
 
-Route::post('/login', [UsersController::class, 'login']);
+Route::post('/login', [UsersController::class, 'login']); /** ログイン画面 */
 
-Route::get('profile', [ProfileController::class, 'profile']);
+Route::get('profile', [ProfileController::class, 'profile']); /** プロフィール画面表示 */
 
 Route::get('search', [UsersController::class, 'index']);
 
-// Route::get('follow-list', [PostsController::class, 'index']);
 
-// Route::get('follower-list', [PostsController::class, 'index']);
+//投稿機能の実装
+Route::get('/posts/create', [PostsController::class, 'create']);
 
+Route::post('/posts', [PostsController::class, 'store']);
+
+
+
+
+//フォロー、フォロワー機能のルート
 Route::get('/follows/followList', [FollowsController::class, 'followList'])->name('followList');
 
 Route::get('/follows/followerList', [FollowsController::class, 'followerList'])->name('followerList');
 
+Route::post('follow/{id}', [FollowsController::class, 'follow'])->middleware('auth')->name('follow');
 
-Route::post('follow/{id}', [FollowsController::class, 'follow'])->name('follow');
-
-Route::post('unfollow/{id}', [FollowsController::class, 'unfollow'])->name('unfollow');
+Route::post('unfollow/{id}', [FollowsController::class, 'unfollow'])->middleware('auth')->name('unfollow');
 
 Route::get('followers/{id}', [ProfileController::class, 'followerList'])->name('follower.list');
 

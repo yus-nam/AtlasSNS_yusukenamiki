@@ -43,5 +43,40 @@ class FollowsController extends Controller
         return view('follows.followerList', compact('followingCount', 'followerCount', 'followers', 'followerIds'));
     }
 
+    // --------------ここから追記pt2-------------------
+
+    // フォローするメソッド
+    public function follow($id)
+    {
+        $userToFollow = User::findOrFail($id);
+        $user = Auth::user();
+
+        // 既にフォローしているか確認
+        if (!$user->followings()->where('following_id', $userToFollow->id)->exists()) {
+            $user->followings()->attach($userToFollow);
+            return redirect()->back()->with('message', 'フォローしました');
+        } else {
+            return redirect()->back()->with('message', 'すでにフォローしています');
+        }
+    }
+
+    // フォロー解除するメソッド
+    public function unfollow($id)
+    {
+        $userToUnfollow = User::findOrFail($id);
+        $user = Auth::user();
+
+        // フォローしているか確認
+        if ($user->followings()->where('following_id', $userToUnfollow->id)->exists()) {
+            $user->followings()->detach($userToUnfollow);
+            return redirect()->back()->with('message', 'フォローを解除しました');
+        } else {
+            return redirect()->back()->with('message', 'フォローしていません');
+        }
+    }
+
+
+
+
 
 }

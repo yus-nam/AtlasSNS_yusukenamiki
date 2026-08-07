@@ -18,9 +18,13 @@ Route::middleware('guest')->group(function () {
     // Route::post('added', [RegisteredUserController::class, 'added']);
 
 });
-Route::get('/dashboard', function () {
+Route::get('/index', function () {
     
     // ログイン成功時のみ表示されるページ
     return view('posts.index');
 
 })->middleware('auth');
+
+    Route::middleware('auth')->group(function () {
+        Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
+    });
