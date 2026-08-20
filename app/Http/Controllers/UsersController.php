@@ -21,6 +21,9 @@ class UsersController extends Controller
 
         return view('users.search');
         // dd(view('users.search')->getPath());
+        // dd(file_get_contents(resource_path('views/users/search.blade.php')));
+
+
     
     }
 
