@@ -15,8 +15,24 @@ class UsersController extends Controller
     }
 
     public function search(){
+
+
+        // \Log::info('UsersController@search called');
+
         return view('users.search');
+        // dd(view('users.search')->getPath());
+    
     }
+
+
+
+
+
+
+
+
+
+
 
 // --------------ここから追記-------------------
 

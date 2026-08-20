@@ -27,7 +27,13 @@ Route::post('/login', [UsersController::class, 'login']); /** ログイン画面
 
 Route::get('profile', [ProfileController::class, 'profile']); /** プロフィール画面表示 */
 
-Route::get('search', [UsersController::class, 'index']);
+
+
+//検索機能の実装
+Route::get('/users/search', [UsersController::class, 'search'])->name('user.search');
+
+
+
 
 
 //投稿機能の実装

@@ -40,7 +40,7 @@
 
       <div id="confirm">
 
-        <p>〇〇さんの</p>
+        <p>{{ session('username') }}さんの</p>
         
         <div class="follow">
           <p>フォロー数</p>

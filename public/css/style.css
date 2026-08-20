@@ -91,7 +91,7 @@ header{
 
 #container{
     flex: 0 0 80%;
-    height: 60px;
+    min-height: 60px;
     background-color: white;
 
 }
@@ -110,7 +110,6 @@ header{
 
 div{
   width: auto;
-  /* width: 100px; */
   height:100px;
   background-color: none;
   margin:0 auto;
@@ -161,6 +160,18 @@ div{
 .btn-type.trash:hover {
     background-image: url('/images/trash-h.png');
 }
+
+.btn-type.search {
+    background-image: url('/images/search.png');
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+
+
 
 .btn.btn-link {
     color: white;

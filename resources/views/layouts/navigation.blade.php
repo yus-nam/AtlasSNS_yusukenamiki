@@ -2,7 +2,7 @@
             <div id="">
                 <h1><a href="{{ url()->current() }}"><img src="/images/atlas.png" class="logo"></a></h1>
             
-                <p class="login-user">〇〇さん</p>
+                <p class="login-user">{{ session('username') }}さん</p>
             
                 <div class="hamburger-menu">    
                     <button class="menu-toggle under">V</button>
