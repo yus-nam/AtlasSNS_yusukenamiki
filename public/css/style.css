@@ -169,9 +169,10 @@ div{
 }
 
 
-
-
-
+.user-list {
+    background-color: bisque;
+    padding-bottom: 50px;
+}
 
 .btn.btn-link {
     color: white;
@@ -182,4 +183,8 @@ div{
     color: white;
     cursor: pointer;
     text-decoration: none;   
+}
+
+.btn.followButton {
+    margin-left: 40px;
 }

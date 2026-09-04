@@ -14,13 +14,32 @@
             <ul>
                 @foreach ($users as $user)
                     <!-- カラム名に合わせて調整してください（username または name） -->
-                    <li>{{ $user->username }} ({{ $user->email }})</li>
+                    <li class="user-list">
+                        {{ $user->username }} ({{ $user->email }})
+                        <button class="btn followButton" data-user-id="{{ $user->id }}">フォロー</button> <!-- ここでボタンを追加 -->
+                    </li>
                 @endforeach
             </ul>
         @endif
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".followButton").click(function() {
+                let button = $(this);
+                let userId = button.data('user-id');
 
+                if (button.text() === "フォロー") {
+                    button.text("フォロー解除");
+                    $.post('/follow', { userId: userId });
+                } else {
+                    button.text("フォロー");
+                    $.post('/unfollow', { userId: userId });
+                }
+            });
+        });
+    </script>
 
 
 
