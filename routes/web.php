@@ -57,6 +57,10 @@ Route::get('followers/{id}', [ProfileController::class, 'followerList'])->name('
 
 Route::get('following/{id}', [ProfileController::class, 'followingList'])->name('following.list');
 
+//フォロー&フォロー解除ボタン
+Route::post('/follow', [FollowController::class, 'follow'])->name('follow');
+
+Route::post('/unfollow', [FollowController::class, 'unfollow'])->name('unfollow');
 
 
 require __DIR__ . '/auth.php';

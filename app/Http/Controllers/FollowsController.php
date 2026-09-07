@@ -48,7 +48,7 @@ class FollowsController extends Controller
     // フォローするメソッド
     public function follow($id)
     {
-        $userToFollow = User::findOrFail($id);
+        $userToFollow = User::findOrFail($id); // 存在しないユーザーが指定された場合は404エラー
         $user = Auth::user();
 
         // 既にフォローしているか確認
