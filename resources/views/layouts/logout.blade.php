@@ -24,7 +24,7 @@
     </head>
     <body>
         <header>
-            <h1><img src="/images/atlas.png" alt="logo"></h1>
+            <h1><img src="/images/atlas.png" alt="logo" href="/index"></h1>
             <p>Social Network Service</p>
         </header>
         <div id="container">

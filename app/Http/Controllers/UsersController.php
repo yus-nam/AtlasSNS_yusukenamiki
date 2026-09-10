@@ -18,20 +18,6 @@ class UsersController extends Controller
         // return view('post.index');
     }
 
-    // public function search(){
-
-    //     // \Log::info('UsersController@search called');
-
-    //     return view('users.search');
-    //     // dd(view('users.search')->getPath());
-    //     // dd(file_get_contents(resource_path('views/users/search.blade.php')));
-    
-    // }
-
-
-
-
-
     public function index(Request $request) {
         //ユーザ一覧を取得
         $users = User::all();
@@ -41,25 +27,37 @@ class UsersController extends Controller
     }
 
 
+    //検索ページの表示
+    public function showUserList()
+    {
+        $currentUserId = Auth::id(); // 現在のログインユーザーのIDを取得
+
+        // 現在のログインユーザーを除外したユーザーリストを取得
+        $users = User::where('id', '!=', $currentUserId)->get();
+
+        return view('users.search', compact('users')); // ビューにデータを渡す
+    }
 
 
+
+    //検索機能の実装
     public function search(Request $request)
     {
         $username = $request->input('username');
 
-        $users = User::query();
+        // $users = User::query();
+
+        $users = User::where('id', '!=', auth()->id()); //全リストを取得
 
         if ($request->filled('username')) {
-            $username = $request->input('username');
-            $users->where('username', 'like', '%' . $username . '%');
+            
+            $users->where('username', 'like', '%' . $username . '%'); //検索条件の指定
         }
 
         $users = $users->get();
 
-        // $users = $users->get();
-
         // 指定するビューを 'users.search' (resources/views/users/search.blade.php) に変更
-        return view('users.search', compact('users'));
+        return view('users.search', compact('users', 'username'));
     }
 
 

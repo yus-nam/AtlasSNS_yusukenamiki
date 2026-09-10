@@ -5,6 +5,9 @@
     <form action="{{ route('user.search') }}" method="GET">
         <input type="text" name="username" placeholder="ユーザ名を入力">
         <button type="submit" class="btn-type search"></button>
+        @if ($username)
+            <span>検索ワード：{{ $username }}</span>
+        @endif
     </form>
 
     <div class="user-list">
@@ -24,11 +27,8 @@
     </div>
 
 
-
-
-
     
-
+<!-- Javascript部分 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -38,21 +38,29 @@
 
                 if (button.text() === "フォロー") {
                     button.text("フォロー解除");
-                    $.post('/follow', { userId: userId });
+                    $.post('/follow', { 
+                        userId: userId, 
+                        _token: '{{ csrf_token() }}'  
+                    }).done(function(response) {
+                        if (response.success) {
+                            location.reload(true); // フォロー成功後にページをリロード
+                        }
+                    });
                 } else {
                     button.text("フォロー");
-                    $.post('/unfollow', { userId: userId });
+                    $.post('/unfollow', { 
+                        userId: userId, 
+                        _token: '{{ csrf_token() }}'  
+                    }).done(function(response) {
+                        if (response.success) {
+                            location.reload(true); // フォロー解除成功後にページをリロード
+                        }
+                    });
                 }
             });
         });
+
     </script>
-
-
-
-
-
-
-
 
 
 </x-login-layout>

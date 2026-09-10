@@ -30,6 +30,8 @@ Route::get('profile', [ProfileController::class, 'profile']); /** プロフィ�
 
 
 //検索機能の実装
+Route::get('/users', [UsersController::class, 'showUserList']);
+
 Route::get('/users/search', [UsersController::class, 'search'])->name('user.search');
 
 
