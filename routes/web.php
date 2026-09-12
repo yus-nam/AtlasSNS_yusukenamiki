@@ -23,8 +23,6 @@ Route::get('/', function () {
 
 Route::get('top', [PostsController::class, 'index']);
 
-Route::post('/login', [UsersController::class, 'login']); /** ログイン画面 */
-
 Route::get('profile', [ProfileController::class, 'profile']); /** プロフィール画面表示 */
 
 

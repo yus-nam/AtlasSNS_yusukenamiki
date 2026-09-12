@@ -40,17 +40,20 @@
 
       <div id="confirm">
 
-        <p>{{ session('username') }}さんの</p>
+        <p>{{ Auth::user()->username }}さんの</p>
         
         <div class="follow">
           <p>フォロー数</p>
-          <p>{{ session('followingsCount', 0) }}名</p> <!-- 数字 -->
+          
+          <p>{{ Auth::user()->followings()->count()}}</p>
         </div>
         <a href="/follows/followList" class="btn btn-link">フォローリスト</a>
 
         <div class="follower">
           <p>フォロワー数</p>
-          <p>{{ session('followersCount', 0) }}名</p> <!-- 数字 -->
+
+          <p>{{ Auth::user()->followers()->count()}}</p>
+
         </div>
         <a href="/follows/followerList" class="btn btn-link">フォロワーリスト</a>
 

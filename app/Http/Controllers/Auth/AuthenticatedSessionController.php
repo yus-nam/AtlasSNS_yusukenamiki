@@ -20,6 +20,7 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+
     /**
      * Handle an incoming authentication request.
      */
@@ -27,36 +28,49 @@ class AuthenticatedSessionController extends Controller
     {
         
         {
-        // バリデーション
-            // $request->validate([
-            //     'email' => 'required|email',
-            //     'password' => 'required',
-            // ]);
 
             // 認証の試行
             if (Auth::attempt($request->only('email', 'password'))) {
                 // 認証成功した場合、セッションを再生成
                 $request->session()->regenerate();
 
+
+
+
+
+
                 /** 追記箇所. ここから **/
 
                 //現在ログインしているユーザを取得
                 $user = Auth::user();
 
+                //ユーザ名をセッションに保存
+                $request->session()->put('username', $user->name);
+
                 // フォロワー数とフォロー数を取得
                 $followingsCount = $user->followings()->count();
                 $followersCount = $user->followers()->count();
 
-                session([
-                    'followingsCount' => $followingsCount,
-                    'followersCount' => $followersCount,
-                ]);
+
+                // フォロー数、フォロワー数もセッションに保存
+                $request->session()->put('followingsCount', $user->followings->count()); // フォローデータがあれば
+                $request->session()->put('followersCount', $user->followers->count()); // フォロワーデータがあれば
 
 
-                session([
-                    'followingsCount' => $followingsCount,
-                    'followersCount' => $followersCount,
-                ]);
+
+
+                
+
+                // session([
+                //     'followingsCount' => $followingsCount,
+                //     'followersCount' => $followersCount,
+                // ]);
+
+
+                // session([
+                //     'followingsCount' => $followingsCount,
+                //     'followersCount' => $followersCount,
+                // ]);
 
                 /** 追記箇所. ここまで **/
 
@@ -71,6 +85,7 @@ class AuthenticatedSessionController extends Controller
             ]);
         }
     }
+
 
     public function followUser($userId)
     {

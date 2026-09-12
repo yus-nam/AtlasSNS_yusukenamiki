@@ -1,8 +1,10 @@
         <div id="head">
             <div id="">
-                <h1><a href="{{ url()->current() }}"><img src="/images/atlas.png" class="logo"></a></h1>
+                <h1><a href="/index"><img src="/images/atlas.png" class="logo"></a></h1>
+
+                <p>{{ Auth::user()->username }}さん</p>
+
             
-                <p class="login-user">{{ session('username') }}さん</p>
             
                 <div class="hamburger-menu">    
                     <button class="menu-toggle under">V</button>
