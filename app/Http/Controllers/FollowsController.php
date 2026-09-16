@@ -71,7 +71,7 @@ class FollowsController extends Controller
         $user = Auth::user();
 
         // フォローしているか確認
-        if ($user->followings()->where('following_id', $userToUnfollow->id)->exists()) {
+        if ($user->followings()->where('followed_id', $userToUnfollow->id)->exists()) {
             $user->followings()->detach($userToUnfollow);
             return redirect()->back()->with('message', 'フォローを解除しました');
         } else {

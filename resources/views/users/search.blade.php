@@ -19,15 +19,26 @@
                     <!-- カラム名に合わせて調整してください（username または name） -->
                     <li class="user-list">
                         {{ $user->username }} ({{ $user->email }})
-                        
+         
+                @if (!Auth::user()->followings()->where('followed_id', $user->id)->exists())
+                {{-- まだフォローしていない --}}
+                <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
+                    @csrf
+                    <button type="submit">フォロー</button>
+                </form>
 
-                        <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
-                            @csrf
-                        <button type="submit">フォロー</button>
-                        </form>
-                        
-                        
-                        <!-- <button class="btn followButton" data-user-id="{{ $user->id }}">フォロー</button> ここでボタンを追加 -->
+                @else
+
+                {{-- すでにフォローしている --}}
+                <form action="{{ route('unfollow', ['id' => $user->id]) }}" method="POST">
+                    @csrf
+                    <button type="submit">フォロー解除</button>
+                </form>
+
+                @endif
+
+
+
                     </li>
                 @endforeach
             </ul>
