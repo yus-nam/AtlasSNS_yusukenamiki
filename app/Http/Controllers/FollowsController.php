@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Follow;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -16,11 +17,9 @@ class FollowsController extends Controller
         $followingCount = $user->followings()->count();
         // ユーザーのフォロワー数
         $followerCount = $user->followers()->count();
-
-        //
+        //ユーザのフォロー数を取得
         $following = $user->followings()->get();
-
-        //
+        //フォローのIDリストを取得
         $followingIds = $following->pluck('id')->toArray();
 
         // フォローリストビューファイルへデータを送信
@@ -53,26 +52,16 @@ class FollowsController extends Controller
         $userToFollow = User::findOrFail($id); // 存在しないユーザーが指定された場合は404エラー
         $user = Auth::user(); //ユーザの全取得
 
+        // dd($user);
+
         // 既にフォローしているか確認
         //関数$userが空っぽの場合
         if (!$user->followings()->where('following_id', $userToFollow->id)->exists()) {
-            
             $user->followings()->attach($userToFollow); //自分がフォローしている人を取得するためのリレーションと中間テーブルに新しいレコードを1件記録するためのメソッド
-
             return redirect()->back()->with('message', 'フォローしました');
-
         } else {
-            
             return redirect()->back()->with('message', 'すでにフォローしています');
-        
         }
-
-    
-
-
-
-
-        
     }
 
     // フォロー解除するメソッド

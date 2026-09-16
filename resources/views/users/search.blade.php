@@ -21,9 +21,9 @@
                         {{ $user->username }} ({{ $user->email }})
                         
 
-                        <form action="{{ route('follow') }}" method="POST">
+                        <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
+                            @csrf
                         <button type="submit">フォロー</button>
-                    
                         </form>
                         
                         
