@@ -33,34 +33,47 @@ Route::get('/users', [UsersController::class, 'showUserList']);
 Route::get('/users/search', [UsersController::class, 'search'])->name('user.search');
 
 
-
-
-
 //投稿機能の実装
 Route::get('/posts/create', [PostsController::class, 'create']);
 
 Route::post('/posts', [PostsController::class, 'store']);
 
 
-
-
-//フォロー、フォロワー機能のルート
+//フォローリスト画面の表示
 Route::get('/follows/followList', [FollowsController::class, 'followList'])->name('followList');
 
+//フォロワーリスト画面の表示
 Route::get('/follows/followerList', [FollowsController::class, 'followerList'])->name('followerList');
 
+//フォロー機能
 Route::post('follow/{id}', [FollowsController::class, 'follow'])->middleware('auth')->name('follow');
 
+
+//フォロー解除機能
 Route::post('unfollow/{id}', [FollowsController::class, 'unfollow'])->middleware('auth')->name('unfollow');
+
+
+
+
+
+
+
 
 Route::get('followers/{id}', [ProfileController::class, 'followerList'])->name('follower.list');
 
+
 Route::get('following/{id}', [ProfileController::class, 'followingList'])->name('following.list');
 
-//フォロー&フォロー解除ボタン
-Route::post('/follow', [FollowController::class, 'follow'])->name('follow');
 
-Route::post('/unfollow', [FollowController::class, 'unfollow'])->name('unfollow');
+
+
+
+
+
+//フォロー&フォロー解除ボタン
+Route::post('/follow', [FollowsController::class, 'follow'])->name('follow');
+
+Route::post('/unfollow', [FollowsController::class, 'unfollow'])->name('unfollow');
 
 
 require __DIR__ . '/auth.php';

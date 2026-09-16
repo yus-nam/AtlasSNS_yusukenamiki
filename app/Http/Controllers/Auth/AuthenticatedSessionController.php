@@ -34,11 +34,6 @@ class AuthenticatedSessionController extends Controller
                 // 認証成功した場合、セッションを再生成
                 $request->session()->regenerate();
 
-
-
-
-
-
                 /** 追記箇所. ここから **/
 
                 //現在ログインしているユーザを取得
@@ -51,29 +46,11 @@ class AuthenticatedSessionController extends Controller
                 $followingsCount = $user->followings()->count();
                 $followersCount = $user->followers()->count();
 
-
                 // フォロー数、フォロワー数もセッションに保存
                 $request->session()->put('followingsCount', $user->followings->count()); // フォローデータがあれば
                 $request->session()->put('followersCount', $user->followers->count()); // フォロワーデータがあれば
 
-
-
-
-                
-
-                // session([
-                //     'followingsCount' => $followingsCount,
-                //     'followersCount' => $followersCount,
-                // ]);
-
-
-                // session([
-                //     'followingsCount' => $followingsCount,
-                //     'followersCount' => $followersCount,
-                // ]);
-
                 /** 追記箇所. ここまで **/
-
 
                 // index（トップ）へリダイレクト
                 return redirect('/index');

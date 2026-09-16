@@ -13,9 +13,9 @@ class FollowsController extends Controller
         $user = Auth::user();
 
         // ユーザーがフォローしている数
-        // $followingCount = $user->followings()->count();
+        $followingCount = $user->followings()->count();
         // ユーザーのフォロワー数
-        // $followerCount = $user->followers()->count();
+        $followerCount = $user->followers()->count();
 
         //
         $following = $user->followings()->get();
@@ -51,12 +51,13 @@ class FollowsController extends Controller
     public function follow($id)
     {
         $userToFollow = User::findOrFail($id); // 存在しないユーザーが指定された場合は404エラー
-        $user = Auth::user();
+        $user = Auth::user(); //ユーザの全取得
 
         // 既にフォローしているか確認
+        //関数$userが空っぽの場合
         if (!$user->followings()->where('following_id', $userToFollow->id)->exists()) {
             
-            $user->followings()->attach($userToFollow);
+            $user->followings()->attach($userToFollow); //自分がフォローしている人を取得するためのリレーションと中間テーブルに新しいレコードを1件記録するためのメソッド
 
             return redirect()->back()->with('message', 'フォローしました');
 
@@ -67,6 +68,11 @@ class FollowsController extends Controller
         }
 
     
+
+
+
+
+        
     }
 
     // フォロー解除するメソッド

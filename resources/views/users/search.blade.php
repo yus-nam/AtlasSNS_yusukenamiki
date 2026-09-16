@@ -19,7 +19,15 @@
                     <!-- カラム名に合わせて調整してください（username または name） -->
                     <li class="user-list">
                         {{ $user->username }} ({{ $user->email }})
-                        <button class="btn followButton" data-user-id="{{ $user->id }}">フォロー</button> <!-- ここでボタンを追加 -->
+                        
+
+                        <form action="{{ route('follow') }}" method="POST">
+                        <button type="submit">フォロー</button>
+                    
+                        </form>
+                        
+                        
+                        <!-- <button class="btn followButton" data-user-id="{{ $user->id }}">フォロー</button> ここでボタンを追加 -->
                     </li>
                 @endforeach
             </ul>
