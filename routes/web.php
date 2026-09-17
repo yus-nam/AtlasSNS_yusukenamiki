@@ -23,9 +23,8 @@ Route::get('/', function () {
 
 Route::get('top', [PostsController::class, 'index']);
 
-Route::get('profile', [ProfileController::class, 'profile']); /** プロフィール画面表示 */
-
-
+// プロフィール画面表示 /
+Route::get('profile', [ProfileController::class, 'profile']); 
 
 //検索機能の実装
 Route::get('/users', [UsersController::class, 'showUserList']);
@@ -34,9 +33,12 @@ Route::get('/users/search', [UsersController::class, 'search'])->name('user.sear
 
 
 //投稿機能の実装
+
+Route::get('/posts', [PostsController::class, 'index']);
+
 Route::get('/posts/create', [PostsController::class, 'create']);
 
-Route::post('/posts', [PostsController::class, 'store']);
+Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
 
 
 

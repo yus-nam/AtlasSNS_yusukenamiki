@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 Route::middleware('guest')->group(function () {
 
@@ -20,11 +21,18 @@ Route::middleware('guest')->group(function () {
 });
 Route::get('/index', function () {
     
+    $posts = Post::all();
     // ログイン成功時のみ表示されるページ
-    return view('posts.index');
+    return view('posts.index', compact('posts'));
 
 })->middleware('auth');
 
-    Route::middleware('auth')->group(function () {
-        Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
-    });
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
+});
+
+
+    
+    
+
+    

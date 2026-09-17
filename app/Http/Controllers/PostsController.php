@@ -8,14 +8,22 @@ use App\Models\Post;
 
 class PostsController extends Controller
 {
+    
     //
     public function index(){
-        return view('post.index');
+        $posts = Post::all(); // 全ての投稿を取得
+        return view('posts.index', compact('posts')); // ビューに渡す
     }
-    // public function postCounts() {
-    //   $posts = Post::get();
-    //   return view('yyyy', compact('posts'));
-    // }
+
+
+
+
+    public function postCounts() {
+      $posts = Post::get();
+      return view('yyyy', compact('posts'));
+    }
+
+
 
     //投稿機能
     public function store(Request $request)
@@ -24,6 +32,9 @@ class PostsController extends Controller
         $validated = $request->validate([
             'post' => 'required|max:150',
         ]);
+
+        //ユーザIDを追加
+        $validated['user_id'] = auth()->id();
 
         // データベースへ保存
         Post::create($validated);
