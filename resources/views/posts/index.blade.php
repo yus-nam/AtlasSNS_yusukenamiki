@@ -5,8 +5,18 @@
 
     <div class="container">
 
-        投稿内容を入力してください
-        <button class="btn-type post"></button>
+        
+        <form type=""action="">
+            <textarea name="" id="" value="投稿内容を入力してください">
+
+            </textarea>
+            <button class="btn-type post"></button>
+        </form>
+
+
+
+
+        <!-- <button class="btn-type post"></button> -->
 
         <button class="btn-type edit"></button>
 

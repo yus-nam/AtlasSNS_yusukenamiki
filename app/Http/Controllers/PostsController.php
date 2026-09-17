@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+
 
 class PostsController extends Controller
 {
@@ -15,13 +17,12 @@ class PostsController extends Controller
     //   return view('yyyy', compact('posts'));
     // }
 
-    // 2. データを保存する
+    //投稿機能
     public function store(Request $request)
     {
         // 入力値のチェック（バリデーション）
         $validated = $request->validate([
-            
-            'body' => 'required|max:150',
+            'post' => 'required|max:150',
         ]);
 
         // データベースへ保存
@@ -30,12 +31,5 @@ class PostsController extends Controller
         // 保存後、一覧画面などにリダイレクト
         return redirect('/posts')->with('success', '投稿が完了しました');
     }
-
-
-
-
-
-
-
     
 }
