@@ -15,15 +15,10 @@ class PostsController extends Controller
         return view('posts.index', compact('posts')); // ビューに渡す
     }
 
-
-
-
     public function postCounts() {
       $posts = Post::get();
       return view('yyyy', compact('posts'));
     }
-
-
 
     //投稿機能
     public function store(Request $request)
@@ -43,4 +38,15 @@ class PostsController extends Controller
         return redirect('/posts')->with('success', '投稿が完了しました');
     }
     
+    // 編集機能
+    public function edit(Request $request)
+    {
+
+
+        return view('posts.edit', compact('posts'));
+
+    }
+
+
+
 }

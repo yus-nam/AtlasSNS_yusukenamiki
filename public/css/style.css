@@ -153,6 +153,42 @@ div{
     background-image: url('/images/trash-h.png');
 }
 
+.modal {
+    display: none; /* 初期状態では表示しない */
+    position: fixed; /* モーダルを画面の固定位置に配置 */
+    z-index: 1000; /* 他の要素より前面に表示 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 画面全体の幅を使う */
+    height: 100%; /* 画面全体の高さを使う */
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景色 */
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    width: 80%; /* モーダルの幅 */
+    background-color: #fff; /* モーダルの背景色 */
+    border-radius: 5px; /* 角を丸くする */
+}
+
+.close-button {
+    cursor: pointer; /* カーソルをポインタに */
+    position: absolute;
+    right: 10px; /* 右上に配置 */
+    top: 10px;
+    font-size: 20px; /* 大きめのフォントサイズ */
+}
+
+
+
+
+
+
+
+
+
 .btn-type.search {
     background-image: url('/images/search.png');
     background-size: 40px;

@@ -33,12 +33,25 @@ Route::get('/users/search', [UsersController::class, 'search'])->name('user.sear
 
 
 //投稿機能の実装
-
 Route::get('/posts', [PostsController::class, 'index']);
 
 Route::get('/posts/create', [PostsController::class, 'create']);
 
 Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+
+
+//編集機能の実装
+Route::get('/', [PostsController::class, 'edit'])->name('posts.edit');
+
+Route::post('/', [PostsController::class, 'update'])->name('posts.update');
+
+
+
+
+
+
+
+
 
 
 
