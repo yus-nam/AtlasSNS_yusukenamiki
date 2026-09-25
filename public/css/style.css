@@ -166,9 +166,10 @@ div{
 
 .modal-content {
     position: relative;
-    margin: auto;
+    margin: 100px auto;
     padding: 20px;
     width: 80%; /* モーダルの幅 */
+    max-width: 500px;
     background-color: #fff; /* モーダルの背景色 */
     border-radius: 5px; /* 角を丸くする */
 }

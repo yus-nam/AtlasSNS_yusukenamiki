@@ -41,9 +41,9 @@ Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
 
 
 //編集機能の実装
-Route::get('/', [PostsController::class, 'edit'])->name('posts.edit');
+// Route::get('/', [PostsController::class, 'edit'])->name('posts.edit');
 
-Route::post('/', [PostsController::class, 'update'])->name('posts.update');
+Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
 
 
 

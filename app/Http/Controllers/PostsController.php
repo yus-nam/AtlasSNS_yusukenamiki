@@ -39,11 +39,24 @@ class PostsController extends Controller
     }
     
     // 編集機能
-    public function edit(Request $request)
+    public function update(Request $request, $id)
     {
 
+        // dd($request->all(), $id);
 
-        return view('posts.edit', compact('posts'));
+        $request->validate([
+            'content' => 'required|max:150'
+        ]);
+
+        //idで編集対象のポストを取得
+        $post = Post::findOrFail($id); 
+
+        // DBの書き換え
+        $post->update([
+            'post' => $request->content,  
+        ]);
+
+        return redirect('/index')->with('success', '投稿を編集しました');
 
     }
 
