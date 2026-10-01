@@ -37,15 +37,16 @@ Route::get('/posts', [PostsController::class, 'index']);
 
 Route::get('/posts/create', [PostsController::class, 'create']);
 
-Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+Route::post('/posts', [PostsController::class, 'store'])->name('posts.store')->middleware('auth');
 
 
 //編集機能の実装
-// Route::get('/', [PostsController::class, 'edit'])->name('posts.edit');
-
 Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
 
+//削除機能の実装
+Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('posts.destroy')->middleware('auth');
 
+//->middleware('auth')をつけるのはログインしている自分のみ有効にするため
 
 
 

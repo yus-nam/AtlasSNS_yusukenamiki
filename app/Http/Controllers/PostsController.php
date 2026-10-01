@@ -41,15 +41,12 @@ class PostsController extends Controller
     // 編集機能
     public function update(Request $request, $id)
     {
-
-        // dd($request->all(), $id);
-
         $request->validate([
             'content' => 'required|max:150'
         ]);
 
         //idで編集対象のポストを取得
-        $post = Post::findOrFail($id); 
+        $post = Post::findOrFail($id);
 
         // DBの書き換え
         $post->update([
@@ -57,8 +54,28 @@ class PostsController extends Controller
         ]);
 
         return redirect('/index')->with('success', '投稿を編集しました');
+    }
+
+
+    // 削除機能
+    public function destroy($id)
+    {
+
+        //idで削除対象のポストを取得
+        $post = Post::findOrFail($id);
+
+        // 対象のポストを削除
+        $post-> delete();
+
+        return redirect('/index')->with('success', '削除に成功しました');
+
 
     }
+
+
+
+
+
 
 
 

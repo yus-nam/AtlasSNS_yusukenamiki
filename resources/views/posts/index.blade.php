@@ -44,9 +44,14 @@
 
                 <button type="button" class="btn-type edit edit-button" data-id="{{ $post->id }}" data-content="{{ $post->post }}">
                 </button>
+            
+                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('この投稿を削除しますか？');">
+                    @csrf
+                    @method('DELETE')
 
-                <button class="btn-type trash delete-button" data-id="{{ $post->id }}">
-                </button>
+                    <button type="submit" class="btn-type trash"></button>
+                </form>
+            
             </div>
 
         @endforeach
@@ -101,7 +106,7 @@
     });
     </script> -->
 
-    <script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
 
         const buttons = document.querySelectorAll('.edit-button');
