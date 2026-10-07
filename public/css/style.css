@@ -184,11 +184,22 @@ div{
 
 
 
+.post-block {
+    width: auto;
+    height: auto;
+    background-color: #D3B7D8;
+}
 
+.personal-post {
+    display: flex;
+    background-color: #280E3b;
+    margin-bottom: 40px;
+}
 
-
-
-
+.user-icon {
+    height: 60px;
+    width: auto;
+}
 
 .btn-type.search {
     background-image: url('/images/search.png');

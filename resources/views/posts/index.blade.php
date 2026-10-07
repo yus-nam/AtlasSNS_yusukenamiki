@@ -37,21 +37,24 @@
                 $randomIcon = $icons[array_rand($icons)];
             @endphp
 
-            <div class="post">
+            <div class="post-block">
                 <p>{{ $post->post }}</p>
 
-                <img src="/images/{{ $randomIcon }}" alt="icon">
+                <div class="personal-post">
+                    <img src="/images/{{ $randomIcon }}" alt="icon" class="user-icon">
 
-                <button type="button" class="btn-type edit edit-button" data-id="{{ $post->id }}" data-content="{{ $post->post }}">
-                </button>
+                    <button type="button" class="btn-type edit edit-button" data-id="{{ $post->id }}" data-content="{{ $post->post }}">
+                    </button>
+                
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('この投稿を削除しますか？');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn-type trash"></button>
+                    </form>
             
-                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('この投稿を削除しますか？');">
-                    @csrf
-                    @method('DELETE')
+                </div>
 
-                    <button type="submit" class="btn-type trash"></button>
-                </form>
-            
+
             </div>
 
         @endforeach
