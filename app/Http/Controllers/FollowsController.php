@@ -19,6 +19,7 @@ class FollowsController extends Controller
         $followerCount = $user->followers()->count();
         //ユーザのフォロー数を取得
         $following = $user->followings()->get();
+        
         //フォローのIDリストを取得
         $followingIds = $following->pluck('id')->toArray();
 
@@ -26,6 +27,7 @@ class FollowsController extends Controller
         return view('follows.followList', compact('followingCount', 'followerCount', 'following', 'followingIds'));
     }
 
+    
     public function followerList() {
         $user = Auth::user();
 
