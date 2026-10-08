@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Follow;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -23,8 +24,11 @@ class FollowsController extends Controller
         //フォローのIDリストを取得
         $followingIds = $following->pluck('id')->toArray();
 
+        // フォローしているユーザーの投稿を取得
+        $posts = Post::whereIn('user_id', $followingIds)->get();
+
         // フォローリストビューファイルへデータを送信
-        return view('follows.followList', compact('followingCount', 'followerCount', 'following', 'followingIds'));
+        return view('follows.followList', compact('followingCount', 'followerCount', 'following', 'followingIds', 'posts'));
     }
 
     

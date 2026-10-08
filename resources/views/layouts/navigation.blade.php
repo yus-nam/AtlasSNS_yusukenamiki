@@ -6,7 +6,7 @@
 
             
             
-                <div class="hamburger-menu">    
+                <div class="hamburger-menu">
                     <button class="menu-toggle under">V</button>
                     <ul class="menu-items">
                         <li><a href="../posts/index">ホーム</a></li>
