@@ -10,7 +10,7 @@
                     <button class="menu-toggle under">V</button>
                     <ul class="menu-items">
                         <li><a href="../posts/index">ホーム</a></li>
-                        <li><a href="../profiles/profile">プロフィール編集</a></li>
+                        <li><a href="/profile">プロフィール編集</a></li>
                         <li><a href="../auth/login">ログアウト</a></li>
                     </ul>
                 </div>

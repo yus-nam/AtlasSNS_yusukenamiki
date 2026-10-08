@@ -23,8 +23,12 @@ Route::get('/', function () {
 
 Route::get('top', [PostsController::class, 'index']);
 
-// プロフィール画面表示 /
-Route::get('profile', [ProfileController::class, 'profile']); 
+// 自分のプロフィール画面表示
+Route::get('profile', [ProfileController::class, 'profile']);
+
+//プロフィールの編集画面表示
+Route::get('profile/edit', [ProfileController::class, 'edit']);
+
 
 //検索機能の実装
 Route::get('/users', [UsersController::class, 'showUserList']);
