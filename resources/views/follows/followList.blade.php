@@ -8,9 +8,11 @@
     <ul>
     @foreach ($following as $followedUser)
         <li>
-            {{ $followedUser->username }}
-            <!-- <h3>{{ $followedUser->name }}の投稿:</h3> -->
             @foreach ($posts as $post)
+
+                {{ $followedUser->username }}
+
+
                 @if ($post->user_id == $followedUser->id)
                     <div class="post">
                         <p>{{ $post->post }}</p> <!-- 投稿内容 -->
