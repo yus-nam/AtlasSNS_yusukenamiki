@@ -76,9 +76,16 @@ Route::post('follow/{id}', [FollowsController::class, 'follow'])->middleware('au
 //フォロー解除機能
 Route::post('unfollow/{id}', [FollowsController::class, 'unfollow'])->middleware('auth')->name('unfollow');
 
+
+
+
 Route::get('followers/{id}', [ProfileController::class, 'followerList'])->name('follower.list');
 
+
 Route::get('following/{id}', [ProfileController::class, 'followingList'])->name('following.list');
+
+
+
 
 
 require __DIR__ . '/auth.php';

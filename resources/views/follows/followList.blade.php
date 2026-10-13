@@ -1,5 +1,17 @@
 <x-login-layout>
 
+    @php
+        $icons = [
+            'icon1.png',
+            'icon2.png',
+            'icon3.png',
+            'icon4.png',
+            'icon5.png',
+            'icon6.png',
+            'icon7.png',
+        ];
+    @endphp
+
   <!-- <h2>機能を実装していきましょう。</h2> -->
 
     <h2>フォローリスト: {{ $followingCount }}</h2>
@@ -10,6 +22,14 @@
                 @foreach ($posts as $post)
 
                     @if ($post->user_id == $followedUser->id)
+
+                        @php
+                            $randomIcon = $icons[array_rand($icons)];
+                        @endphp
+
+                        <a href="{{ url('/profile/' . $followedUser->id) }}">
+                            <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+                        </a>
 
                     {{ $followedUser->username }}
 

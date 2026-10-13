@@ -2,6 +2,31 @@
 
     <h1>{{ $user->username }}のプロフィール</h1>
 
+    @if (Auth::id() !== $user->id)
+
+        @if ($isFollowing)
+            <form action="{{ url('/unfollow/' . $user->id) }}" method="POST">
+                @csrf
+                <button type="submit">フォロー解除</button>
+            </form>
+        @else
+            <form action="{{ url('/follow/' . $user->id) }}" method="POST">
+                @csrf
+                <button type="submit">フォロー</button>
+            </form>
+        @endif
+
+    @endif
+
+
+
+
+
+
+
+
+
+
     <h2>フォローしているユーザー（{{ $followings->count() }}）</h2>
     <ul>
         @foreach ($followings as $following)

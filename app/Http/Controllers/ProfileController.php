@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -37,22 +38,20 @@ class ProfileController extends Controller
 
     public function show($id)
     {
+        //相手ユーザを取得
         $user = User::findOrFail($id);
 
+        //相手のフォロー・フォロワーを取得
         $followings = $user->followings;
         
         $followers = $user->followers;
 
-        return view('profiles.show', compact(
-            'user',
-            'followings',
-            'followers'
-        ));
+        // ログインユーザーが相手をフォローしているか確認
+        $isFollowing = Auth::user()->followings()->where('users.id', $user->id)->exists();
 
+        return view('profiles.show', compact('user','followings','followers', 'isFollowing'));
 
-        return view('profiles.show', compact('user'));
     }
-
 
 
 
