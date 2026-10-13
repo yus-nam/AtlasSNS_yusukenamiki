@@ -27,7 +27,10 @@ Route::get('/index', function () {
 
 })->middleware('auth');
 
+
+//ログイン中のユーザだけがログアウトできる
 Route::middleware('auth')->group(function () {
+    //ログアウト処理をpostで呼び出して実行、その結果をroute('logout')で呼び出す
     Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 });
 

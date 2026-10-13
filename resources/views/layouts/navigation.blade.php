@@ -11,7 +11,17 @@
                     <ul class="menu-items">
                         <li><a href="../posts/index">ホーム</a></li>
                         <li><a href="/profile">プロフィール編集</a></li>
-                        <li><a href="../auth/login">ログアウト</a></li>
+                        <!-- <li><a href="../auth/login">ログアウト</a></li> -->
+                        
+                        <li>
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="logout-form">
+                            @csrf
+                            </form>
+                        </li>
+
+
+
                     </ul>
                 </div>
             </div>
