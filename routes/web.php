@@ -21,13 +21,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//目次の表示
 Route::get('top', [PostsController::class, 'index']);
+
 
 // 自分のプロフィール画面表示
 Route::get('profile', [ProfileController::class, 'profile']);
 
+
 //プロフィールの編集画面表示
 Route::get('profile/edit', [ProfileController::class, 'edit']);
+
+Route::get('/profile/{id}', [ProfileController::class, 'show'])->whereNumber('id')->middleware('auth');
+
 
 
 //検索機能の実装
@@ -47,6 +53,7 @@ Route::post('/posts', [PostsController::class, 'store'])->name('posts.store')->m
 //編集機能の実装
 Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
 
+
 //削除機能の実装
 Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('posts.destroy')->middleware('auth');
 
@@ -54,22 +61,17 @@ Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('posts.d
 
 
 
-
-
-
-
-
-
-
-
 //フォローリスト画面の表示
 Route::get('/follows/followList', [FollowsController::class, 'followList'])->name('followList');
+
 
 //フォロワーリスト画面の表示
 Route::get('/follows/followerList', [FollowsController::class, 'followerList'])->name('followerList');
 
+
 //フォロー機能
 Route::post('follow/{id}', [FollowsController::class, 'follow'])->middleware('auth')->name('follow');
+
 
 //フォロー解除機能
 Route::post('unfollow/{id}', [FollowsController::class, 'unfollow'])->middleware('auth')->name('unfollow');
@@ -78,4 +80,7 @@ Route::get('followers/{id}', [ProfileController::class, 'followerList'])->name('
 
 Route::get('following/{id}', [ProfileController::class, 'followingList'])->name('following.list');
 
+
 require __DIR__ . '/auth.php';
+
+

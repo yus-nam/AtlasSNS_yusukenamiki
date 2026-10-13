@@ -41,8 +41,8 @@
                 <p>{{ $post->post }}</p>
 
                 <div class="personal-post">
-                    <a href="">
-                        <img src="/images/{{ $randomIcon }}" alt="icon" class="user-icon">
+                    <a href="{{ url('/profile/' . $post->user_id) }}">
+                        <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
                     </a>
 
                     <button type="button" class="btn-type edit edit-button" data-id="{{ $post->id }}" data-content="{{ $post->post }}">

@@ -35,7 +35,23 @@ class ProfileController extends Controller
 
     }
 
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
 
+        $followings = $user->followings;
+        
+        $followers = $user->followers;
+
+        return view('profiles.show', compact(
+            'user',
+            'followings',
+            'followers'
+        ));
+
+
+        return view('profiles.show', compact('user'));
+    }
 
 
 

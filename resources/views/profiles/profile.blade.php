@@ -15,9 +15,5 @@
             <li>{{ $follower->name }}</li>
         @endforeach
     </ul>
-  
-
-
-
 
 </x-login-layout>
