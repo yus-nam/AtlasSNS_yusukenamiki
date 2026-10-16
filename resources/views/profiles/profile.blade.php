@@ -2,7 +2,7 @@
 
     <h1>{{ $user->name }}のプロフィール</h1>
 
-    <h2>フォローしているユーザー（{{ $followings->count() }}）</h2>
+    <h2>フォロー（{{ $followings->count() }}）</h2>
     <ul>
         @foreach ($followings as $following)
             <li>{{ $following->name }}</li>

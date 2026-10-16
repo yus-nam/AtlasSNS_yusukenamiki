@@ -32,6 +32,7 @@ Route::get('profile', [ProfileController::class, 'profile']);
 //プロフィールの編集画面表示
 Route::get('profile/edit', [ProfileController::class, 'edit']);
 
+//他ユーザのプロフィール画面表示
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->whereNumber('id')->middleware('auth');
 
 

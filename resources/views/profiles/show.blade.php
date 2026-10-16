@@ -19,15 +19,45 @@
     @endif
 
 
+    <!-- ここから先追記(10/16) -->
+
+
+    @if (isset($posts))
+    @foreach ($posts as $post)
+
+    @php
+        $randomIcon = $icons[array_rand($icons)];
+    @endphp
+
+        <div class="post-block">
+            <p>{{ $post->post }}</p>
+
+            <div class="personal-post">
+                <a href="{{ url('/profile/' . $post->user_id) }}">
+                    <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+                </a>
+
+                <button type="button" class="btn-type edit edit-button" data-id="{{ $post->id }}" data-content="{{ $post->post }}">
+                </button>
+            
+                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('この投稿を削除しますか？');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn-type trash"></button>
+                </form>
+        
+            </div>
+
+
+        </div>
+    @endforeach
+    @endif
+    <!-- ここから先追記(10/16) -->
 
 
 
 
-
-
-
-
-    <h2>フォローしているユーザー（{{ $followings->count() }}）</h2>
+    <!-- <h2>フォロー（{{ $followings->count() }}）</h2>
     <ul>
         @foreach ($followings as $following)
             <li>{{ $following->name }}</li>
@@ -39,6 +69,6 @@
         @foreach ($followers as $follower)
             <li>{{ $follower->name }}</li>
         @endforeach
-    </ul>
+    </ul> -->
 
 </x-login-layout>

@@ -18,13 +18,20 @@
 
     <h2>フォロワーリスト {{ $followers->count() }}</h2>
 
+    @foreach ($followers as $user)
+        @php
+            $randomIcon = $icons[array_rand($icons)];
+        @endphp
+        <a>
+            <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+        </a>
+    @endforeach
+
     <ul>
         @foreach ($followers as $follower)
             <li>
                 
                 @foreach ($posts as $post)
-
-                <!-- {{ $follower->username }}  ここに書くとユーザBは名前だけがユーザAの投稿数分、表示されてしまう-->
 
                     @if ($post->user_id == $follower->id)
 
@@ -51,10 +58,5 @@
     @if ($posts->isEmpty())
         <p>フォローされているユーザーの投稿はありません。</p>
     @endif
-
-
-
-
-
 
 </x-login-layout>

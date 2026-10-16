@@ -16,6 +16,16 @@
 
     <h2>フォローリスト: {{ $followingCount }}</h2>
   
+    @foreach ($following as $user)
+        @php
+            $randomIcon = $icons[array_rand($icons)];
+        @endphp
+        <a>
+            <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+        </a>
+    @endforeach
+
+
     <ul>
         @foreach ($following as $followedUser)
             <li>
