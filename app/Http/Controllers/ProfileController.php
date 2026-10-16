@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use App\Models\Post;
 
 class ProfileController extends Controller
 {
@@ -27,6 +28,12 @@ class ProfileController extends Controller
 
         return view('profiles.profile', compact('user', 'followings', 'followers')); // プロフィールビューにデータを渡す
     }
+
+
+
+
+
+    
   
     public function edit() {
 
@@ -35,6 +42,13 @@ class ProfileController extends Controller
         return view('profiles.edit', compact('user'));
 
     }
+
+
+
+
+
+
+
 
     public function show($id)
     {
@@ -46,10 +60,14 @@ class ProfileController extends Controller
         
         $followers = $user->followers;
 
+        //そのユーザーの投稿を取得
+        $posts = Post::where('user_id', $user->id)->get();
+        // dd($posts);
+
         // ログインユーザーが相手をフォローしているか確認
         $isFollowing = Auth::user()->followings()->where('users.id', $user->id)->exists();
 
-        return view('profiles.show', compact('user','followings','followers', 'isFollowing'));
+        return view('profiles.show', compact('user','followings','followers', 'isFollowing', 'posts'));
 
     }
 

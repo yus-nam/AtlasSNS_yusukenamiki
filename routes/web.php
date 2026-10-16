@@ -32,30 +32,29 @@ Route::get('profile', [ProfileController::class, 'profile']);
 //プロフィールの編集画面表示
 Route::get('profile/edit', [ProfileController::class, 'edit']);
 
+
 //他ユーザのプロフィール画面表示
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->whereNumber('id')->middleware('auth');
 
 
-
-//検索機能の実装
+//ユーザ検索機能の実装
 Route::get('/users', [UsersController::class, 'showUserList']);
 
 Route::get('/users/search', [UsersController::class, 'search'])->name('user.search');
 
 
-//投稿機能の実装
+//新規投稿機能
 Route::get('/posts', [PostsController::class, 'index']);
 
 Route::get('/posts/create', [PostsController::class, 'create']);
 
 Route::post('/posts', [PostsController::class, 'store'])->name('posts.store')->middleware('auth');
 
-
-//編集機能の実装
+//投稿の編集機能
 Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
 
 
-//削除機能の実装
+//投稿の削除機能
 Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('posts.destroy')->middleware('auth');
 
 //->middleware('auth')をつけるのはログインしている自分のみ有効にするため

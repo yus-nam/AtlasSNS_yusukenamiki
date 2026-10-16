@@ -182,8 +182,6 @@ div{
     font-size: 20px; /* 大きめのフォントサイズ */
 }
 
-
-
 .post-block {
     width: auto;
     height: auto;
@@ -225,4 +223,11 @@ div{
 
 .btn.followButton {
     margin-left: 40px;
+}
+
+.profile-edit {
+    
+    background-color: lightcyan;
+    margin: 100px 0;
+    height: 300px;
 }

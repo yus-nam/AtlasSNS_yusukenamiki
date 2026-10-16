@@ -45,15 +45,23 @@
                         <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
                     </a>
 
+                    @if(Auth::id() === $post->user_id)
                     <button type="button" class="btn-type edit edit-button" data-id="{{ $post->id }}" data-content="{{ $post->post }}">
                     </button>
-                
-                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('この投稿を削除しますか？');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn-type trash"></button>
-                    </form>
-            
+                    @endif
+
+
+
+
+
+                    @if(Auth::id() === $post->user_id)
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('この投稿を削除しますか？');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn-type trash"></button>
+                        </form>
+                    @endif
+
                 </div>
 
 

@@ -19,6 +19,18 @@
     @endif
 
 
+    @php
+        $icons = [
+            'icon1.png',
+            'icon2.png',
+            'icon3.png',
+            'icon4.png',
+            'icon5.png',
+            'icon6.png',
+            'icon7.png',
+        ];
+    @endphp
+
     <!-- ここから先追記(10/16) -->
 
 
