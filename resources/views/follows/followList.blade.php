@@ -25,7 +25,6 @@
         </a>
     @endforeach
 
-
     <ul>
         @foreach ($following as $followedUser)
             <li>

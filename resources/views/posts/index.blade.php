@@ -50,10 +50,6 @@
                     </button>
                     @endif
 
-
-
-
-
                     @if(Auth::id() === $post->user_id)
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('この投稿を削除しますか？');">
                             @csrf
@@ -63,7 +59,6 @@
                     @endif
 
                 </div>
-
 
             </div>
 
