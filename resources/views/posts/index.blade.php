@@ -38,25 +38,33 @@
             @endphp
 
             <div class="post-block">
-                <p>{{ $post->post }}</p>
 
                 <div class="personal-post">
-                    <a href="{{ url('/profile/' . $post->user_id) }}">
+
+                    <a href="{{ url('/profile/' . $post->user_id) }}" class="user-icon">
                         <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
                     </a>
 
-                    @if(Auth::id() === $post->user_id)
-                    <button type="button" class="btn-type edit edit-button" data-id="{{ $post->id }}" data-content="{{ $post->post }}">
-                    </button>
-                    @endif
+                    <p>{{ $post->user->username }}</p>
 
-                    @if(Auth::id() === $post->user_id)
-                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('この投稿を削除しますか？');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn-type trash"></button>
-                        </form>
-                    @endif
+                    <p class="post-text">{{ $post->post }}</p>
+
+                    <small>{{ $post->created_at->format('Y-m-d H：i') }}</small> <!-- ここで日時を表示 -->
+
+                    <div class="button-parts">
+                        @if(Auth::id() === $post->user_id)
+                        <button type="button" class="btn-type edit edit-button" data-id="{{ $post->id }}" data-content="{{ $post->post }}">
+                        </button>
+                        @endif
+
+                        @if(Auth::id() === $post->user_id)
+                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('この投稿を削除しますか？');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-type trash"></button>
+                            </form>
+                        @endif
+                    </div>
 
                 </div>
 

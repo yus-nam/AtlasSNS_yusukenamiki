@@ -11,8 +11,15 @@ class PostsController extends Controller
     
     //
     public function index(){
-        $posts = Post::all(); // 全ての投稿を取得
-        return view('posts.index', compact('posts')); // ビューに渡す
+
+        $posts = Post::orderBy('created_at', 'desc')->get(); //desc 新しい順(降順)
+    
+        // dd($posts->map(function ($post) {
+        //     return $post->created_at->format('Y-m-d H:i:s');
+        // })->values()->all());
+
+        return view('posts.index', compact('posts'));
+
     }
 
     public function postCounts() {
@@ -35,7 +42,7 @@ class PostsController extends Controller
         Post::create($validated);
 
         // 保存後、一覧画面などにリダイレクト
-        return redirect('/posts')->with('success', '投稿が完了しました');
+        return redirect('/index')->with('success', '投稿が完了しました');
     }
     
     // 編集機能

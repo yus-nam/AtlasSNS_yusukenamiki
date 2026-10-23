@@ -50,6 +50,7 @@ Route::get('/posts/create', [PostsController::class, 'create']);
 
 Route::post('/posts', [PostsController::class, 'store'])->name('posts.store')->middleware('auth');
 
+
 //投稿の編集機能
 Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
 

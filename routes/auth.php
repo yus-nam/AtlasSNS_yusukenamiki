@@ -21,7 +21,7 @@ Route::middleware('guest')->group(function () {
 });
 Route::get('/index', function () {
     
-    $posts = Post::all();
+    $posts = Post::orderBy('created_at', 'desc')->get();
     // ログイン成功時のみ表示されるページ
     return view('posts.index', compact('posts'));
 

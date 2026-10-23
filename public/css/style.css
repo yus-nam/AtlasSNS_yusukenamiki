@@ -32,7 +32,9 @@ header{
 .hamburger-menu {
     float: right;
     width: 400px;
-    height: 400px;
+    height: auto;
+    position: relative;
+    z-index: 10;
 }
 
 /* navigation部分はここから */
@@ -91,7 +93,11 @@ header{
 #side-bar{
     flex: 0 0 19%;
     border-left: 1px solid #727272;
-    height: 300px;
+    width: auto;
+    height: 100%;
+    position: absolute;
+    right: 100px;
+    z-index: 0;
 }
 
  section{
@@ -112,8 +118,14 @@ div{
 }
 
 
+.button-parts {
+    /* background-color: wheat; */
+    display: flex;
+    width: auto;
+}
+
 .btn-type {
-    margin-right: 50px;
+    margin-right: 20px;
     width: 40px;
     height: 40px;
     background: none;
@@ -193,8 +205,14 @@ div{
 }
 
 .user-icon {
-    height: 60px;
+    height: 55px;
     width: auto;
+    margin-right: 10px;
+}
+
+.post-text {
+    margin-right: 30px;
+    margin-left: 30px;
 }
 
 .btn-type.search {
@@ -204,7 +222,6 @@ div{
     background-position: center;
 }
 
-
 .user-list {
     /* background-color: bisque; */
     padding-bottom: 50px;
@@ -213,6 +230,7 @@ div{
 .btn.btn-link {
     color: white;
     background-color: #0456CE;
+    border-radius: 6px;
 }
 
 .btn.btn-link:hover {
@@ -225,12 +243,27 @@ div{
     margin-left: 40px;
 }
 
+.follow, .follower {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.user-search {
+    
+}
+
 .profile-edit {
-    background-color: lightcyan;
+    background-color: lightcoral;
     margin: 100px 0;
-    height: 700px;
+    height: 1400px;
 }
 
 .form-parts {
+    display: flex;
     align-items: center;
+}
+
+.icon-list {
+    margin-bottom: 40px;
 }

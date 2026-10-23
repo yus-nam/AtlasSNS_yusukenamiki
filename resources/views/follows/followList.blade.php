@@ -20,38 +20,30 @@
         @php
             $randomIcon = $icons[array_rand($icons)];
         @endphp
-        <a>
+        <a class="icon-list">
             <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
         </a>
     @endforeach
 
     <ul>
-        @foreach ($following as $followedUser)
+        @foreach ($posts as $post)
+            @php
+                $randomIcon = $icons[array_rand($icons)];
+            @endphp
+
             <li>
-                @foreach ($posts as $post)
 
-                    @if ($post->user_id == $followedUser->id)
+                <a href="{{ url('/profile/' . $post->user_id) }}">
+                    <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+                </a>
 
-                        @php
-                            $randomIcon = $icons[array_rand($icons)];
-                        @endphp
+                {{ $post->user->username }}
 
-                        <a href="{{ url('/profile/' . $followedUser->id) }}">
-                            <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
-                        </a>
+                <div class="post-list">
+                    <p>{{ $post->post }}</p>
+                    <small>{{ $post->created_at->format('Y-m-d H：i') }}</small>
+                </div>
 
-                    {{ $followedUser->username }}
-
-                        <div class="post">
-                            <p>{{ $post->post }}</p> <!-- 投稿内容 -->
-                            <small>{{ $post->created_at }}</small> <!-- 投稿日時 -->
-                        </div>
-                    @endif
-                @endforeach
-
-                <!-- <button class="unfollow-button" data-user-id="{{ $followedUser->id }}">
-                    フォロー解除
-                </button> -->
             </li>
         @endforeach
     </ul>

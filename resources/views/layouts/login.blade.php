@@ -34,34 +34,39 @@
   <div id="row">
 
     <div id="container">
-      {{ $slot }}
+        {{ $slot }}
     </div>
-    
+
     <div id="side-bar">
 
-      <div id="confirm">
+        <div id="confirm">
 
-        <p>{{ Auth::user()->username }}さんの</p>
-        
-        <div class="follow">
-          <p>フォロー数</p>
-          
-          <p>{{ Auth::user()->followings()->count()}}</p>
-        </div>
-        <a href="/follows/followList" class="btn btn-link">フォローリスト</a>
+            <p>{{ Auth::user()->username }}さんの</p>
+            
+            <div class="follow">
+                <p>フォロー数</p>
+                
+                <p>{{ Auth::user()->followings()->count()}}人</p>
+            </div>
 
-        <div class="follower">
-          <p>フォロワー数</p>
+            <a href="/follows/followList" class="btn btn-link">フォローリスト</a>
 
-          <p>{{ Auth::user()->followers()->count()}}</p>
 
-        </div>
-        <a href="/follows/followerList" class="btn btn-link">フォロワーリスト</a>
+            <div class="follower">
+                <p>フォロワー数</p>
 
-      </div>
-      
-      <a href="/users/search" class="btn btn-link">ユーザー検索</a>
-    
+                <p>{{ Auth::user()->followers()->count()}}人</p>
+
+            </div>
+            
+            <a href="/follows/followerList" class="btn btn-link">フォロワーリスト</a>
+
+            <div class="user-search">
+                <a href="/users/search" class="btn btn-link">ユーザー検索</a>
+            </div>
+
+        </div>     
+
     </div>
 
 

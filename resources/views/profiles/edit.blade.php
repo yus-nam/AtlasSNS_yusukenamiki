@@ -16,14 +16,11 @@
                 ];
             @endphp
         
-
             @php
                 $randomIcon = $icons[array_rand($icons)];
             @endphp
             
-            <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
-
-        
+        <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
 
         <div class="form-parts">
             <label for="name">ユーザー名</label>
@@ -59,7 +56,7 @@
         <br>
         <br>
 
-        <input type="submit" value="更新">
+        <input type="submit" class="btn btn-profile" value="更新">
 
     </div>
 

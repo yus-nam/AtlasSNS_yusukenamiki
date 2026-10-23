@@ -25,7 +25,8 @@ class FollowsController extends Controller
         $followingIds = $following->pluck('id')->toArray();
 
         // フォローしているユーザーの投稿を取得
-        $posts = Post::whereIn('user_id', $followingIds)->get();
+        // $posts = Post::whereIn('user_id', $followingIds)->get();
+        $posts = Post::whereIn('user_id', $followingIds)->orderBy('created_at', 'desc')->get();
 
         // フォローリストビューファイルへデータを送信
         return view('follows.followList', compact('followingCount', 'followerCount', 'following', 'followingIds', 'posts'));
@@ -44,10 +45,10 @@ class FollowsController extends Controller
         $followers = $user->followers()->get();
 
         //フォロワーのID一覧を取得
-        $followerIds = $followers->pluck('id')->toArray();
+        $followerIds = $followers->pluck('id');
 
         // フォローしているユーザーの投稿を取得
-        $posts = Post::whereIn('user_id', $followerIds)->get();
+        $posts = Post::whereIn('user_id', $followerIds)->orderBy('created_at', 'desc')->get();
         
         // フォロワーリストビューファイルへデータを送信
         return view('follows.followerList', compact('followingCount', 'followerCount', 'followers', 'followerIds', 'posts'));

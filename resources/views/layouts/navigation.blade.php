@@ -7,7 +7,7 @@
                 <div class="hamburger-menu">
                     <button class="menu-toggle under">V</button>
                     <ul class="menu-items">
-                        <li><a href="../posts/index">ホーム</a></li>
+                        <li><a href="{{ url('/index') }}">ホーム</a></li>
                         <li><a href="../profiles/edit">プロフィール編集</a></li>
                         <li>
                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
