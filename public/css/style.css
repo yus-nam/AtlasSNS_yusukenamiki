@@ -73,10 +73,6 @@ header{
 /* navigation部分はここまで */
 
 
-
-
-
-
 /* main content */
 #row{
     display: flex;
@@ -86,27 +82,74 @@ header{
 #container{
     flex: 0 0 80%;
     min-height: 60px;
-    background-color: white;
 
 }
 
+/* サイドバー */
 #side-bar{
     flex: 0 0 19%;
     border-left: 1px solid #727272;
-    width: auto;
+    width: 350px;
     height: 100%;
     position: absolute;
-    right: 100px;
+    right: 20px;
     z-index: 0;
+    background-color: white;
 }
 
+.side-name {
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+.btn.btn-link {
+    color: white;
+    background-color: #0456CE;
+    width: auto;
+    border-radius: 6px;
+    
+}
+
+.btn.btn-link:hover {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;   
+}
+
+.follow,.follower {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    left: 20px;
+}
+
+.follow-button,.follower-button {
+    position: absolute;
+    right: 20px;
+}
+
+.user-search {
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* サイドバー終わり */
+
+
+
+
+
+
+/* 本体 */
+
  section{
-  background-color :#ccd8ff;
   padding:50px 0;
 }
 
 
-div{
+div {
   width: auto;
   height:100px;
   background-color: none;
@@ -239,22 +282,8 @@ div{
     text-decoration: none;   
 }
 
-.btn.followButton {
-    margin-left: 40px;
-}
-
-.follow, .follower {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.user-search {
-    
-}
-
+/* プロフィール部分 */
 .profile-edit {
-    background-color: lightcoral;
     margin: 100px 0;
     height: 1400px;
 }
@@ -266,4 +295,50 @@ div{
 
 .icon-list {
     margin-bottom: 40px;
+}
+
+
+.user-prof {
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.user-prof img {
+    position: relative;
+    left: 40px;
+}
+
+.user-prof-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.followButton {
+    right: 0;
+}
+
+
+
+/* プロフィール編集画面 */
+.form-parts:has(#introduction) {
+    align-items: flex-start;
+}
+
+#introduction {
+    resize: both;
+    width: 300px;
+    height: 100px;
+    box-sizing: border-box;
+}
+
+.form-parts label {
+    width: 140px;
+    flex-shrink: 0;
+}
+
+.form-parts input,
+.form-parts textarea {
+    margin-left: 0;
 }

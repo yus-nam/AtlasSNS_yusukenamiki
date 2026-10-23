@@ -47,9 +47,13 @@
 
                     <p>{{ $post->user->username }}</p>
 
+                    <small>{{ $post->created_at->format('Y-m-d H：i') }}</small> <!-- ここで日時を表示 -->
+
+                    
+
                     <p class="post-text">{{ $post->post }}</p>
 
-                    <small>{{ $post->created_at->format('Y-m-d H：i') }}</small> <!-- ここで日時を表示 -->
+                    
 
                     <div class="button-parts">
                         @if(Auth::id() === $post->user_id)

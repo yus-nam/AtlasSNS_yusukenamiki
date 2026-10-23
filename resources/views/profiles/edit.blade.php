@@ -3,7 +3,10 @@
 
 
     <div class="profile-edit">
-    <!-- <h1>{{ $user->name }}のプロフィール</h1> -->
+        <form action="{{ route('profile.update') }}" method="POST">
+            @csrf
+            @method('PUT')
+
             @php
                 $icons = [
                     'icon1.png',
@@ -20,43 +23,52 @@
                 $randomIcon = $icons[array_rand($icons)];
             @endphp
             
-        <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+            <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
 
-        <div class="form-parts">
-            <label for="name">ユーザー名</label>
-            <input type="text" id="name" name="name" placeholder="{{ $user->username }}">
-        </div>
+            <div class="form-parts">
+                <label for="name">ユーザー名</label>
+                <input type="text" id="username" name="username" placeholder="{{ $user->username }}">
+            </div>
 
-        <div class="form-parts">
-            <label for="email">メールアドレス</label>
-            <input type="email" name="email" placeholder="{{ $user->email }}">
-        </div>
+            <div class="form-parts">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}">
+            </div>
 
-        <div class="form-parts">
-            <label for="password">パスワード</label>
-            <input type="password" placeholder="パスワードを入力してください">
-        </div>
+            <div class="form-parts">
+                <label for="password">パスワード</label>
+                <input type="password" id="password" name="password" placeholder="変更する場合のみ入力してください">
+            </div>
 
-        <div class="form-parts">
-            <label for="password_confirmation">パスワード確認</label>
-            <input type="password" placeholder="パスワード確認のためにもう一度入力してください">
-        </div>
+            <div class="form-parts">
+                <label for="password_confirmation">パスワード確認</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="新しいパスワードを再入力してください">
+            </div>
 
-        <div class="form-parts">
-            <label for="introduction">自己紹介</label>
-            <textarea name="introduction" id="introduction" placeholder="{{ $user->introduction ?: '自己紹介を入力してください' }}">{{ $user->introduction }}</textarea>
-        </div>
+            <div class="form-parts">
+                <label for="introduction">自己紹介</label>
+                <textarea name="introduction" id="introduction" placeholder="自己紹介を入力してください">{{ old('introduction', $user->introduction) }}</textarea>
+            </div>
 
-        <div class="form-parts">
-            <label for="icon">アイコン画像</label>
-            <input type="file" alt="user-icon">
-        </div>
 
-        <br>
-        <br>
-        <br>
 
-        <input type="submit" class="btn btn-profile" value="更新">
+            <div class="form-parts">
+                <label for="icon">アイコン画像</label>
+                <input type="file" alt="user-icon">
+            </div>
+
+
+
+
+            
+            <br>
+            <br>
+            <br>
+
+            <input type="submit" class="btn btn-profile" value="更新">
+        </form>
+
+
 
     </div>
 

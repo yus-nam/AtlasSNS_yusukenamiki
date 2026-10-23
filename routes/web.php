@@ -33,8 +33,21 @@ Route::get('profile', [ProfileController::class, 'profile']);
 Route::get('profiles/edit', [ProfileController::class, 'edit']);
 
 
+//プロフィールの更新機能
+Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+
+
 //他ユーザのプロフィール画面表示
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->whereNumber('id')->middleware('auth');
+
+
+
+
+
+
+
+
+
 
 
 //ユーザ検索機能の実装
@@ -78,10 +91,7 @@ Route::post('follow/{id}', [FollowsController::class, 'follow'])->middleware('au
 Route::post('unfollow/{id}', [FollowsController::class, 'unfollow'])->middleware('auth')->name('unfollow');
 
 
-
-
 Route::get('followers/{id}', [ProfileController::class, 'followerList'])->name('follower.list');
-
 
 Route::get('following/{id}', [ProfileController::class, 'followingList'])->name('following.list');
 

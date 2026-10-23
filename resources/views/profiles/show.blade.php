@@ -1,24 +1,5 @@
 <x-login-layout>
 
-    <h1>{{ $user->username }}のプロフィール</h1>
-
-    @if (Auth::id() !== $user->id)
-
-        @if ($isFollowing)
-            <form action="{{ url('/unfollow/' . $user->id) }}" method="POST">
-                @csrf
-                <button type="submit">フォロー解除</button>
-            </form>
-        @else
-            <form action="{{ url('/follow/' . $user->id) }}" method="POST">
-                @csrf
-                <button type="submit">フォロー</button>
-            </form>
-        @endif
-
-    @endif
-
-
     @php
         $icons = [
             'icon1.png',
@@ -30,6 +11,45 @@
             'icon7.png',
         ];
     @endphp
+
+    @php
+        $randomIcon = $icons[array_rand($icons)];
+    @endphp
+
+    <div class="user-prof">
+        <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+
+        <div class="user-prof-text">
+            <p>ユーザー名 {{ $user->username }}</p>
+
+            <p>自己紹介 {{ $user->introduction }}</p>
+        </div>
+
+        @if (Auth::id() !== $user->id)
+
+        <div class="user followButton">
+            @if ($isFollowing)
+                <form action="{{ url('/unfollow/' . $user->id) }}" method="POST">
+                    @csrf
+                    <button type="submit">フォロー解除</button>
+                </form>
+            @else
+                <form action="{{ url('/follow/' . $user->id) }}" method="POST">
+                    @csrf
+                    <button type="submit">フォロー</button>
+                </form>
+            @endif
+        </div>
+
+    @endif
+
+    </div>
+
+
+    
+
+
+    
 
     <!-- ここから先追記(10/16) -->
 
