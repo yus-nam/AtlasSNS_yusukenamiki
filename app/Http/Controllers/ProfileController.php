@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
     public function update(Request $request) {
         $request->validate([
-            'username' => 'required|max:255',
+            'username' => 'nullable|string|max:255',
             'email' => 'required|email|max:255',
             'password' => 'nullable|min:8|confirmed',
             'bio' => 'nullable|max:1000',
@@ -53,26 +53,32 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         // ユーザー名・メールアドレス・自己紹介を更新
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->bio = $request->bio;
+
+        if ($request->filled('username')) {
+            $user->username = $request->username;
+        }
+
+        if ($request->filled('email')) {
+            $user->email = $request->email;
+        }
 
         // パスワードが入力された場合だけ更新
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }
 
+        $user->bio = $request->input('bio');
+
         // 画像が選択された場合だけ保存
         if ($request->hasFile('icon_image')) {
             $path = $request->file('icon_image')->store('icons', 'public');
             $user->icon_image = $path;
         }
-
         
         // データベースに保存
         $user->save();
 
-        return redirect('/profile')->with('success', 'プロフィールを更新しました');
+        return redirect('/profile/' . Auth::id())->with('success', 'プロフィールを更新しました');
     }
 
 

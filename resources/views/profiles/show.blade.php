@@ -90,20 +90,59 @@
     <!-- ここから先追記(10/16) -->
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const buttons = document.querySelectorAll('.edit-button');
+
+        buttons.forEach(function (button) {
+
+            button.addEventListener('click', function () {
+
+                // 投稿IDを取得
+                const postId = this.dataset.id;
+
+                // 投稿内容を取得
+                const content = this.dataset.content;
+
+                // テキストエリアに投稿内容を入れる
+                document.getElementById('content').value = content;
+
+                // 更新先URLを設定
+                document.getElementById('editForm').action = '/posts/' + postId;
+
+                // モーダルを表示
+                document.getElementById('editModal').style.display = 'block';
+
+            });
+
+        });
+
+        // ×ボタン
+        document.querySelector('.close-button').addEventListener('click', function () {
+            document.getElementById('editModal').style.display = 'none';
+        });
+
+    });
+</script>
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+
+        <form id="editForm" method="POST">
+            @csrf
+            @method('PUT')
+
+            <textarea name="content" id="content"></textarea>
+
+            <button type="submit" id="update" class="btn-type edit"></button>
+        </form>
+    </div>
+</div>
 
 
-    <!-- <h2>フォロー（{{ $followings->count() }}）</h2>
-    <ul>
-        @foreach ($followings as $following)
-            <li>{{ $following->name }}</li>
-        @endforeach
-    </ul>
 
-    <h2>フォロワー（{{ $followers->count() }}）</h2>
-    <ul>
-        @foreach ($followers as $follower)
-            <li>{{ $follower->name }}</li>
-        @endforeach
-    </ul> -->
+
 
 </x-login-layout>

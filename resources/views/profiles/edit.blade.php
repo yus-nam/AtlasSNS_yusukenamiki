@@ -49,9 +49,18 @@
                 <input type="password" id="password" name="password" placeholder="変更する場合のみ入力してください">
             </div>
 
+
             <div class="form-parts">
                 <label for="password_confirmation">パスワード確認</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" placeholder="新しいパスワードを再入力してください">
+            </div>
+
+
+
+            <div class="form-parts">
+                <label>
+                    <input type="checkbox" id="show-password">パスワードを表示
+                </label>
             </div>
 
             <div class="form-parts">
@@ -65,10 +74,6 @@
                 <label for="icon">アイコン画像</label>
                 <input type="file" name="icon_image" alt="user-icon" accept="image/*">
             </div>
-
-
-
-
 
             <br>
             <br>
@@ -84,7 +89,17 @@
     
 
 
+<script>
+    document.getElementById('show-password').addEventListener('change', function () {
+        const password = document.getElementById('password');
+        const confirmation = document.getElementById('password_confirmation');
 
+        const type = this.checked ? 'text' : 'password';
+
+        password.type = type;
+        confirmation.type = type;
+    });
+</script>
 
 
 
