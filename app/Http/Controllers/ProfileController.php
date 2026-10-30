@@ -45,7 +45,8 @@ class ProfileController extends Controller
             'username' => 'required|max:255',
             'email' => 'required|email|max:255',
             'password' => 'nullable|min:8|confirmed',
-            'introduction' => 'nullable|max:1000',
+            'bio' => 'nullable|max:1000',
+            'icon_image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
         ]);
 
         // ログイン中のユーザーを取得
@@ -54,24 +55,25 @@ class ProfileController extends Controller
         // ユーザー名・メールアドレス・自己紹介を更新
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->introduction = $request->introduction;
+        $user->bio = $request->bio;
 
         // パスワードが入力された場合だけ更新
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }
 
+        // 画像が選択された場合だけ保存
+        if ($request->hasFile('icon_image')) {
+            $path = $request->file('icon_image')->store('icons', 'public');
+            $user->icon_image = $path;
+        }
+
+        
         // データベースに保存
         $user->save();
 
         return redirect('/profile')->with('success', 'プロフィールを更新しました');
     }
-
-
-
-
-
-
 
 
 
@@ -89,7 +91,7 @@ class ProfileController extends Controller
         $followers = $user->followers;
 
         //そのユーザーの投稿を取得
-        $posts = Post::where('user_id', $user->id)->get();
+        $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
         // dd($posts);
 
         // ログインユーザーが相手をフォローしているか確認

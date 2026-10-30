@@ -14,12 +14,35 @@
         @if($users->isEmpty())
             <p>ユーザーが見つかりませんでした。</p>
         @else
+
+        @php
+        $icons = [
+            'icon1.png',
+            'icon2.png',
+            'icon3.png',
+            'icon4.png',
+            'icon5.png',
+            'icon6.png',
+            'icon7.png',
+        ];
+        @endphp
+
             <ul>
                 @foreach ($users as $user)
-                    <!-- カラム名に合わせて調整してください（username または name） -->
-                    <li class="user-list">
-                        {{ $user->username }} ({{ $user->email }})
+
+                    @php
+                        $randomIcon = $icons[array_rand($icons)];
+                    @endphp
+
+
+                <!-- カラム名に合わせて調整してください（username または name） -->
+                <li class="user-list">
+                {{ $user->username }}
          
+
+
+
+
                 @if (!Auth::user()->followings()->where('followed_id', $user->id)->exists())
                 {{-- まだフォローしていない --}}
                 <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">

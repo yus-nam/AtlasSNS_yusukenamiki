@@ -22,7 +22,7 @@
         <div class="user-prof-text">
             <p>ユーザー名 {{ $user->username }}</p>
 
-            <p>自己紹介 {{ $user->introduction }}</p>
+            <p>自己紹介 {{ $user->bio }}</p>
         </div>
 
         @if (Auth::id() !== $user->id)

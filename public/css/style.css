@@ -125,10 +125,22 @@ header{
     left: 20px;
 }
 
+
+
 .follow-button,.follower-button {
     position: absolute;
-    right: 20px;
+    right: 45px;
+    z-index: 2;
 }
+
+.follow-button {
+    top: 100px;
+}
+
+.follower-button {
+    top: 210px;
+}
+
 
 .user-search {
     text-align: center;
@@ -274,6 +286,7 @@ div {
     color: white;
     background-color: #0456CE;
     border-radius: 6px;
+    width: 140px;
 }
 
 .btn.btn-link:hover {
