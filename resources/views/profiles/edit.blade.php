@@ -28,11 +28,15 @@
                 ];
             @endphp
         
-            @php
-                $randomIcon = $icons[array_rand($icons)];
-            @endphp
-            
-            <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+
+
+            @if ($user->icon_image)
+                <img src="{{ asset('storage/' . $user->icon_image) }}" alt="user-icon" class="user-icon">
+            @else
+                <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+            @endif
+
+
 
             <div class="form-parts">
                 <label for="username">ユーザー名</label>
@@ -87,7 +91,6 @@
     </div>
 
     
-
 
 <script>
     document.getElementById('show-password').addEventListener('change', function () {

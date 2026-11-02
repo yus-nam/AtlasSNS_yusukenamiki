@@ -17,7 +17,16 @@
     @endphp
 
     <div class="user-prof">
-        <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+
+
+        <!-- <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon"> -->
+
+        @if ($user->icon_image)
+            <img src="{{ asset('storage/' . $user->icon_image) }}" alt="user-icon" class="user-icon">
+        @else
+            <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
+        @endif
+
 
         <div class="user-prof-text">
             <p>ユーザー名 {{ $user->username }}</p>
@@ -66,7 +75,11 @@
 
             <div class="personal-post">
                 <a href="{{ url('/profile/' . $post->user_id) }}">
-                    <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+                    @if ($user->icon_image)
+                        <img src="{{ asset('storage/' . $user->icon_image) }}" alt="user-icon" class="user-icon">
+                    @else
+                        <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
+                    @endif
                 </a>
 
             @if(Auth::id() === $post->user_id)

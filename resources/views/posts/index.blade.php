@@ -42,17 +42,22 @@
                 <div class="personal-post">
 
                     <a href="{{ url('/profile/' . $post->user_id) }}" class="user-icon">
-                        <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+                        
+                        @if ($post->user && $post->user->icon_image)
+                            <img src="{{ asset('storage/' . $post->user->icon_image) }}" alt="user-icon" class="user-icon">
+                        @else
+                            <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
+                        @endif
+
                     </a>
 
                     <p>{{ $post->user->username }}</p>
 
-                    <small>{{ $post->created_at->format('Y-m-d H：i') }}</small> <!-- ここで日時を表示 -->
-
-                    
 
                     <p class="post-text">{{ $post->post }}</p>
 
+
+                        <small>{{ $post->created_at->format('Y-m-d H：i') }}</small> <!-- ここで日時を表示 -->
                     
 
                     <div class="button-parts">

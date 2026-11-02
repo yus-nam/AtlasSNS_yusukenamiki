@@ -29,11 +29,11 @@ Route::get('top', [PostsController::class, 'index']);
 Route::get('profile', [ProfileController::class, 'profile']);
 
 
-//プロフィールの編集画面表示
+//プロフィールの編集画面の表示
 Route::get('profiles/edit', [ProfileController::class, 'edit']);
 
 
-//プロフィールの更新機能
+//プロフィールの編集を反映・更新
 Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 
 

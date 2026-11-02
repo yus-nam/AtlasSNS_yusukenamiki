@@ -23,7 +23,11 @@
             $randomIcon = $icons[array_rand($icons)];
         @endphp
         <a class="icon-list">
-            <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+            @if ($user->icon_image)
+                <img src="{{ asset('storage/' . $user->icon_image) }}" alt="user-icon" class="user-icon">
+            @else
+                <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
+            @endif
         </a>
     @endforeach
 
@@ -36,7 +40,11 @@
             <li>
 
                 <a href="{{ url('/profile/' . $post->user_id) }}">
-                    <img src="/images/{{ $randomIcon }}" alt="user-icon" class="user-icon">
+                    @if ($post->user && $post->user->icon_image)
+                        <img src="{{ asset('storage/' . $post->user->icon_image) }}" alt="user-icon" class="user-icon">
+                    @else
+                        <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
+                    @endif
                 </a>
 
                 {{ $post->user->username }}

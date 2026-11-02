@@ -37,11 +37,19 @@
 
                 <!-- カラム名に合わせて調整してください（username または name） -->
                 <li class="user-list">
+
+                <a href="{{ url('/profile/' . $user->id) }}" class="user-icon">
+
+                @if ($user->icon_image)
+                    <img src="{{ asset('storage/' . $user->icon_image) }}" alt="user-icon" class="user-icon">
+                @else
+                    <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
+                @endif
+
+                </a>
+
                 {{ $user->username }}
          
-
-
-
 
                 @if (!Auth::user()->followings()->where('followed_id', $user->id)->exists())
                 {{-- まだフォローしていない --}}
