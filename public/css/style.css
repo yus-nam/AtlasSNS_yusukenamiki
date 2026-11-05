@@ -29,6 +29,9 @@ header{
     justify-content: center;
 }
 
+
+
+/* ナビゲーション部分 */
 .hamburger-menu {
     float: right;
     width: 400px;
@@ -37,7 +40,6 @@ header{
     z-index: 10;
 }
 
-/* navigation部分はここから */
 .menu-toggle {
     font-size: 18px; /* サイズを変更 */
     background: none; /* 背景を透明にする */
@@ -70,10 +72,10 @@ header{
     text-decoration: none;
     color: white;
 }
-/* navigation部分はここまで */
 
 
-/* main content */
+
+/* メイン部分 */
 #row{
     display: flex;
     flex-flow: row wrap;
@@ -85,7 +87,7 @@ header{
 
 }
 
-/* サイドバー */
+/* サイドバー部分 */
 #side-bar{
     flex: 0 0 19%;
     border-left: 1px solid #727272;
@@ -107,8 +109,8 @@ header{
     color: white;
     background-color: #0456CE;
     width: auto;
-    border-radius: 6px;
-    
+    border-radius: 5px;
+    width: 140px;
 }
 
 .btn.btn-link:hover {
@@ -124,8 +126,6 @@ header{
     position: relative;
     left: 20px;
 }
-
-
 
 .follow-button,.follower-button {
     position: absolute;
@@ -147,7 +147,13 @@ header{
     margin-top: 100px;
 }
 
-/* サイドバー終わり */
+
+
+
+
+
+
+
 
 
 
@@ -250,7 +256,7 @@ div {
 
 
 
-/* 最初の画面の投稿部分 */
+/* 投稿一覧画面上部の入力欄とボタン */
 .post-form {
     margin-bottom: 40px;
 }
@@ -259,9 +265,6 @@ div {
     height: auto;
     margin: 0 0 40px;
 }
-
-
-
 
 .post-form form {
     display: flex;
@@ -275,13 +278,13 @@ div {
     resize: none;
 }
 
-
-
-
 .post-form button {
     margin-left: 50px;
 }
 
+
+
+/* 投稿一覧画面 */
 
 .post-block {
     width: auto;
@@ -292,12 +295,6 @@ div {
     display: flex;
     margin-bottom: 40px;
 }
-
-/* .user-icon {
-    height: 55px;
-    width: auto;
-    margin-right: 10px;
-} */
 
 .user-icon {
     width: 50px;
@@ -313,29 +310,49 @@ div {
     margin-left: 30px;
 }
 
+
+
+/* ユーザ検索ボタン */
+
+
+/* 検索ボックス */
+.search-box form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 検索ワード入力欄 */
+.search-box input {
+    width: 300px;
+    height: 50px;
+    box-sizing: border-box;
+}
+
 .btn-type.search {
     background-image: url('/images/search.png');
-    background-size: 40px;
+    background-size: 50px;
     background-repeat: no-repeat;
     background-position: center;
+    flex-shrink: 0;
+    border-radius: 5px;
 }
+
+
 
 .user-list {
     padding-bottom: 50px;
 }
 
-.btn.btn-link {
-    color: white;
-    background-color: #0456CE;
-    border-radius: 6px;
-    width: 140px;
+
+li.user-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.btn.btn-link:hover {
-    color: white;
-    cursor: pointer;
-    text-decoration: none;   
-}
+
+
 
 /* プロフィール部分 */
 .profile-edit {
