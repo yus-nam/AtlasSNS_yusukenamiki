@@ -162,10 +162,10 @@ header{
 
 
 div {
-  width: auto;
-  height:100px;
-  background-color: none;
-  margin:0 auto;
+    width: auto;
+    height: 100px;  /* ← ここを変更します */
+    background-color: none;
+    margin: 0 auto;
 }
 
 .container {
@@ -174,7 +174,6 @@ div {
 
 
 .button-parts {
-    /* background-color: wheat; */
     display: flex;
     width: auto;
 }
@@ -249,6 +248,41 @@ div {
     font-size: 20px; /* 大きめのフォントサイズ */
 }
 
+
+
+/* 最初の画面の投稿部分 */
+.post-form {
+    margin-bottom: 40px;
+}
+
+.post-form-container {
+    height: auto;
+    margin: 0 0 40px;
+}
+
+
+
+
+.post-form form {
+    display: flex;
+    align-items: flex-end;
+}
+
+.post-textarea {
+    width: 100%;
+    height: 220px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+
+
+
+.post-form button {
+    margin-left: 50px;
+}
+
+
 .post-block {
     width: auto;
     height: auto;
@@ -274,10 +308,6 @@ div {
     flex-shrink: 0;
 }
 
-
-
-
-
 .post-text {
     margin-right: 30px;
     margin-left: 30px;
@@ -291,7 +321,6 @@ div {
 }
 
 .user-list {
-    /* background-color: bisque; */
     padding-bottom: 50px;
 }
 
@@ -364,7 +393,12 @@ div {
     flex-shrink: 0;
 }
 
-.form-parts input,
-.form-parts textarea {
+.form-parts input {
     margin-left: 0;
+}
+
+.form-parts textarea{
+    margin-left: 0;
+    resize: none;
+    width: 500px;
 }

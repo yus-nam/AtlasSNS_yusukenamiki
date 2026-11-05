@@ -5,17 +5,34 @@
 
     <div class="container">
 
-        
-        <form action="{{ route('posts.store') }}" method="POST">
-            @csrf
-            <textarea name="post" id="" placeholder="投稿内容を入力してください"></textarea>
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-            <button type="submit" class="btn-type post"></button>
-        </form>
+        <div class="post-form post-form-container">
+            <form action="{{ route('posts.store') }}" method="POST">
+                @csrf
+                <textarea name="post" class="post-textarea" placeholder="投稿内容を入力してください"></textarea>
+                <!-- @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif -->
+                <button type="submit" class="btn-type post"></button>
+            </form>
+
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+
+
+
+        </div>
+
+
+
+
+
+
 
         <div class="posts">
         @php
