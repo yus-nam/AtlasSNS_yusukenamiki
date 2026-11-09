@@ -1,19 +1,42 @@
 <x-login-layout>
 
+    {{-- ログイン中のユーザー用アイコン設定 --}}
+    @php
+        $icons = [
+            'icon1.png',
+            'icon2.png',
+            'icon3.png',
+            'icon4.png',
+            'icon5.png',
+            'icon6.png',
+            'icon7.png',
+        ];
+
+        $user = Auth::user();
+
+        $randomIcon = $icons[array_rand($icons)];
+        
+    
+    @endphp
+
 
     <!-- <h2>機能を実装していきましょう。</h2> -->
 
     <div class="container">
 
-        <div class="post-form post-form-container">
-            <form action="{{ route('posts.store') }}" method="POST">
+        <div class="post-form-container">
+
+            @if ($user && $user->icon_image)
+                <img src="{{ asset('storage/' . $user->icon_image) }}" alt="user-icon" class="user-icon post">
+            @else
+                <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon post">
+            @endif
+
+
+            <form action="{{ route('posts.store') }}" method="POST" class="post-form">
                 @csrf
                 <textarea name="post" class="post-textarea" placeholder="投稿内容を入力してください"></textarea>
-                <!-- @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif -->
+                
                 <button type="submit" class="btn-type post"></button>
             </form>
 
@@ -23,15 +46,8 @@
                     </div>
                 @endif
 
-
-
-
         </div>
-
-
-
-
-
+        
 
 
         <div class="posts">
