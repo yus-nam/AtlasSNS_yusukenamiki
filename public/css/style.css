@@ -413,7 +413,9 @@ li.user-list {
 }
 
 .icon-list {
+    display: inline-block;
     margin-bottom: 40px;
+    margin-right: 10px;
 }
 
 
