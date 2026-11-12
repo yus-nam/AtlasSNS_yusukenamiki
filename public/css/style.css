@@ -121,13 +121,14 @@ header{
 /* メイン部分 */
 #row{
     display: flex;
-    flex-flow: row wrap;
+    /* flex-flow: row wrap; */
+    flex-flow: row nowrap
 }
 
 #container{
     flex: 0 0 80%;
     min-height: 60px;
-
+    box-sizing: border-box;
 }
 
 
@@ -135,11 +136,14 @@ header{
 /* サイドバー部分 */
 #side-bar{
     flex: 0 0 19%;
-    border-left: 1px solid #727272;
-    width: 350px;
-    height: 100%;
     position: absolute;
     right: 20px;
+    top: auto; /*追記*/
+    width: 350px;
+    height: 100%;
+    font-size: 16px;
+    box-sizing: border-box; /*追記*/
+    border-left: 1px solid #727272;
     z-index: 0;
     background-color: white;
 }
@@ -169,7 +173,7 @@ header{
     align-items: center;
     gap: 40px;
     position: relative;
-    left: 20px;
+    left: 30px;
 }
 
 .follow-button,.follower-button {
@@ -179,13 +183,12 @@ header{
 }
 
 .follow-button {
-    top: 100px;
+    top: 108px;
 }
 
 .follower-button {
-    top: 210px;
+    top: 216px;
 }
-
 
 .user-search {
     text-align: center;
@@ -302,14 +305,14 @@ div {
 
 .post-form {
     display: flex;
-    width: 100%;
+    width: 80%;
     align-items: flex-end;
     gap: 20px;
     box-sizing: border-box;
 }
 
 .post-textarea {
-    width: 1000px;
+    width: 60%;
     height: 220px;
     box-sizing: border-box;
     resize: none;
@@ -318,6 +321,21 @@ div {
 .post-form button {
     flex-shrink: 0;
     margin-left: 50px;
+}
+
+.post-form-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+}
+
+.alert.alert-success {
+    display: block;
+    width: auto;
+    height: auto;
+    margin: 10px 0;
 }
 
 
@@ -330,11 +348,10 @@ div {
     box-sizing: border-box;
 }
 
-
-
 .post-block {
     width: auto;
     height: auto;
+    font-size: 16px;
 }
 
 .personal-post {
@@ -349,11 +366,11 @@ div {
     object-fit: cover;
     object-position: center;
     flex-shrink: 0;
+    margin-right: 40px;
 }
 
-
 .post-text {
-    margin-right: 3rd0px;
+    margin-right: 60px;
     margin-left: 30px;
 }
 
@@ -361,6 +378,14 @@ div {
 .user-icon.post {
     margin-right: 20px;
 }
+
+.post-days {
+    position: relative;
+    right: 0;
+}
+
+
+
 
 
 

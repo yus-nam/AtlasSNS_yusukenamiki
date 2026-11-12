@@ -32,19 +32,20 @@
                 <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon post">
             @endif
 
-
-            <form action="{{ route('posts.store') }}" method="POST" class="post-form">
-                @csrf
-                <textarea name="post" class="post-textarea" placeholder="投稿内容を入力してください"></textarea>
-                
-                <button type="submit" class="btn-type post"></button>
-            </form>
+            <div class="post-form-area">
+                <form action="{{ route('posts.store') }}" method="POST" class="post-form">
+                    @csrf
+                    <textarea name="post" class="post-textarea" placeholder="投稿内容を入力してください"></textarea>
+                    
+                    <button type="submit" class="btn-type post"></button>
+                </form>
 
                 @if (session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
                 @endif
+            </div>
 
         </div>
         
@@ -86,17 +87,15 @@
 
                     <p>{{ $post->user->username }}</p>
 
+                    <br>
 
                     <p class="post-text">{{ $post->post }}</p>
 
-
-                        <small>{{ $post->created_at->format('Y-m-d H：i') }}</small> <!-- ここで日時を表示 -->
-                    
+                    <small class="post-days">{{ $post->created_at->format('Y-m-d H：i') }}</small> <!-- ここで日時を表示 -->
 
                     <div class="button-parts">
                         @if(Auth::id() === $post->user_id)
-                        <button type="button" class="btn-type edit edit-button" data-id="{{ $post->id }}" data-content="{{ $post->post }}">
-                        </button>
+                            <button type="button" class="btn-type edit edit-button" data-id="{{ $post->id }}" data-content="{{ $post->post }}"></button>
                         @endif
 
                         @if(Auth::id() === $post->user_id)
