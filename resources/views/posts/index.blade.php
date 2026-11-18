@@ -20,9 +20,7 @@
     @endphp
 
 
-    <!-- <h2>機能を実装していきましょう。</h2> -->
-
-    <div class="container">
+    <div class="container-body">
 
         <div class="post-form-container">
 
@@ -87,11 +85,11 @@
 
                     <p>{{ $post->user->username }}</p>
 
-                    <br>
+                
+                    <small class="post-days">{{ $post->created_at->format('Y-m-d H：i') }}</small> <!-- ここで日時を表示 -->
+
 
                     <p class="post-text">{{ $post->post }}</p>
-
-                    <small class="post-days">{{ $post->created_at->format('Y-m-d H：i') }}</small> <!-- ここで日時を表示 -->
 
                     <div class="button-parts">
                         @if(Auth::id() === $post->user_id)

@@ -34,7 +34,6 @@ class User extends Authenticatable
     ];
 
 
-
     /** 以下追記コード **/
 
     // 自分がフォローしているレコード

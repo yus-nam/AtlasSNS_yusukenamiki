@@ -53,8 +53,6 @@
                 <a href="/follows/followList" class="btn btn-link">フォローリスト</a>
             </div>
 
-
-
             <div class="follower">
                 <p>フォロワー数</p>
 
@@ -62,23 +60,16 @@
 
             </div>
             
-            
             <div class="follower-button">
                 <a href="/follows/followerList" class="btn btn-link">フォロワーリスト</a>
             </div>
-
             
 
             <div class="user-search">
                 <a href="/users/search" class="btn btn-link">ユーザー検索</a>
             </div>
 
-
-
         </div>
-
-
-
 
     </div>
 

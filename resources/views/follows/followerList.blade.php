@@ -13,53 +13,59 @@
         ];
     @endphp
 
-
   <!-- <h2>機能を実装していきましょう。</h2> -->
 
-    <h2>フォロワーリスト {{ $followers->count() }}</h2>
+    <div class="page-content">
+        <h2>フォロワーリスト {{ $followers->count() }}</h2>
 
-    @foreach ($followers as $user)
-        @php
-            $randomIcon = $icons[array_rand($icons)];
-        @endphp
-        <a class="icon-list">
-            @if ($user->icon_image)
-                <img src="{{ asset('storage/' . $user->icon_image) }}" alt="user-icon" class="user-icon">
-            @else
-                <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
-            @endif
-        </a>
-    @endforeach
-
-    <ul>
-        @foreach ($posts as $post)
+        @foreach ($followers as $user)
             @php
                 $randomIcon = $icons[array_rand($icons)];
             @endphp
-
-            <li>
-
-                <a href="{{ url('/profile/' . $post->user_id) }}">
-                    @if ($post->user && $post->user->icon_image)
-                        <img src="{{ asset('storage/' . $post->user->icon_image) }}" alt="user-icon" class="user-icon">
+            <div class="icon-list">
+                <a href="{{ url('/profile/' . $user->id) }}">
+                    @if ($user->icon_image)
+                        <img src="{{ asset('storage/' . $user->icon_image) }}" alt="user-icon" class="user-icon">
                     @else
                         <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
                     @endif
-                </a>
+                </a>  
+            </div>
+        @endforeach
 
-                {{ $post->user->username }}
+        <ul>
+            @foreach ($posts as $post)
+                @php
+                    $randomIcon = $icons[array_rand($icons)];
+                @endphp
 
-                <div class="post-list">
+                <div class="post-all">
+                    <div class="about-user">
+                        <a href="{{ url('/profile/' . $post->user_id) }}">
+                        @if ($post->user && $post->user->icon_image)
+                            <img src="{{ asset('storage/' . $post->user->icon_image) }}" alt="user-icon" class="user-icon">
+                        @else
+                            <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
+                        @endif
+                        </a>
+
+                        {{ $post->user->username }}
+
+                        <small class="post-days">{{ $post->created_at->format('Y-m-d H：i') }}</small>
+                    </div>
+
+
                     <p>{{ $post->post }}</p>
-                    <small>{{ $post->created_at->format('Y-m-d H：i') }}</small>
+
                 </div>
 
-            </li>
-        @endforeach
-    </ul>
+            @endforeach
+        </ul>
 
-    @if ($posts->isEmpty())
-        <p>フォローされているユーザーの投稿はありません。</p>
-    @endif
+        @if ($posts->isEmpty())
+            <p>フォローされているユーザーの投稿はありません。</p>
+        @endif
 
+
+    </div>
 </x-login-layout>

@@ -98,7 +98,7 @@ header{
     list-style-type: none;
     background-color: #fff;
     text-align: center;
-    font-size: 24px;  
+    font-size: 20px;  
 }
     
 
@@ -119,32 +119,54 @@ header{
 
 
 /* メイン部分 */
-#row{
+/* #row{ */
+    /* display: flex; */
+    /* flex-flow: row nowrap */
+/* } */
+
+#row {
     display: flex;
-    /* flex-flow: row wrap; */
-    flex-flow: row nowrap
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+
+
+
 #container{
-    flex: 0 0 80%;
-    min-height: 60px;
+    flex: 1;
+    /* flex: 0 0 80%; */
+    min-height: 0;
+    /* min-height: 60px; */
     box-sizing: border-box;
 }
 
 
 
 /* サイドバー部分 */
-#side-bar{
-    flex: 0 0 19%;
-    position: absolute;
-    right: 20px;
-    top: auto; /*追記*/
+/* #side-bar{ */
+    /* flex: 0 0 19%; */
+    /* position: absolute; */
+    /* right: 20px; */
+    /* top: auto; */
+    /* width: 350px; */
+    /* height: 100%; */
+    /* font-size: 16px; */
+    /* box-sizing: border-box;  */
+    /* border-left: 1px solid #727272; */
+    /* z-index: 0; */
+    /* background-color: white; */
+/* } */
+
+#side-bar {
+    flex: 0 0 350px;
+    position: static;
     width: 350px;
-    height: 100%;
+    height: auto;
     font-size: 16px;
-    box-sizing: border-box; /*追記*/
+    box-sizing: border-box;
     border-left: 1px solid #727272;
-    z-index: 0;
     background-color: white;
 }
 
@@ -176,6 +198,8 @@ header{
     left: 30px;
 }
 
+
+
 .follow-button,.follower-button {
     position: absolute;
     right: 45px;
@@ -196,13 +220,25 @@ header{
 }
 
 
+/* フォロー、フォロワーリスト画面 */
+.page-content {
+    position: relative;
+    top: 30px;
+    left: 100px;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
 
 /* 本体 */
 
  section{
   padding:50px 0;
 }
-
 
 div {
     width: auto;
@@ -211,7 +247,7 @@ div {
     margin: 0 auto;
 }
 
-.container {
+.container-body {
     width: 100%;
 }
 
@@ -294,13 +330,16 @@ div {
 
 
 /* 投稿一覧画面上部の入力欄とボタン */
-
 .post-form-container {
+    position: relative;
+    left: 100px;
     display: flex;
+    align-items: flex-start;
     width: 1500px;
     height: auto;
     margin: 20px 0 60px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .post-form {
@@ -312,6 +351,8 @@ div {
 }
 
 .post-textarea {
+    flex: 1;
+    min-width: 0;
     width: 60%;
     height: 220px;
     box-sizing: border-box;
@@ -342,11 +383,25 @@ div {
 
 /* 投稿一覧画面 */
 .posts {
+    position: relative;
+    left: 100px;
     width: 1500px;
     height: auto;
     margin: 0;
-    box-sizing: border-box;
+    padding-bottom: 10px;
+    box-sizing: border-box;;
 }
+
+
+.post-all {
+    margin-bottom: 40px;
+    height: 100px;
+}
+
+.about-user {
+    height: 70%
+}
+
 
 .post-block {
     width: auto;
@@ -357,6 +412,7 @@ div {
 .personal-post {
     display: flex;
     margin-bottom: 40px;
+    border-bottom: 1px solid #8E8E8E;
 }
 
 .user-icon {
@@ -366,7 +422,11 @@ div {
     object-fit: cover;
     object-position: center;
     flex-shrink: 0;
-    margin-right: 40px;
+    margin-right: 10px;
+}
+
+.post-list {
+    margin-top: 10px;
 }
 
 .post-text {
@@ -374,9 +434,22 @@ div {
     margin-left: 30px;
 }
 
+
+
+
+
+
+
 /* 投稿入力欄の横のアイコン */
 .user-icon.post {
     margin-right: 20px;
+    flex-shrink: 0;
+}
+
+
+.postUserName {
+    position: relative;
+    left: 10px;
 }
 
 .post-days {
@@ -384,8 +457,10 @@ div {
     right: 0;
 }
 
-
-
+.post-detail {
+    position: relative;
+    left: 70px;
+}
 
 
 
@@ -439,8 +514,8 @@ li.user-list {
 
 .icon-list {
     display: inline-block;
-    margin-bottom: 40px;
-    margin-right: 10px;
+    margin-bottom: 20px;
+    margin-right: 16px;
 }
 
 
