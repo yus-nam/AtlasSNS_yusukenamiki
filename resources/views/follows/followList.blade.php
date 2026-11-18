@@ -40,7 +40,6 @@
                     @endphp
 
                     <div class="post-all">
-
                         <div class="about-user">
                             <a href="{{ url('/profile/' . $post->user_id) }}">
                                 @if ($post->user && $post->user->icon_image)

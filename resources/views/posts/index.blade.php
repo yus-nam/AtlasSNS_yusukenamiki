@@ -83,7 +83,7 @@
 
                     </a>
 
-                    <p>{{ $post->user->username }}</p>
+                    <p class="postUserName">{{ $post->user->username }}</p>
 
                 
                     <small class="post-days">{{ $post->created_at->format('Y-m-d H：i') }}</small> <!-- ここで日時を表示 -->

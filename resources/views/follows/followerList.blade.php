@@ -42,20 +42,19 @@
                 <div class="post-all">
                     <div class="about-user">
                         <a href="{{ url('/profile/' . $post->user_id) }}">
-                        @if ($post->user && $post->user->icon_image)
-                            <img src="{{ asset('storage/' . $post->user->icon_image) }}" alt="user-icon" class="user-icon">
-                        @else
-                            <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
-                        @endif
+                            @if ($post->user && $post->user->icon_image)
+                                <img src="{{ asset('storage/' . $post->user->icon_image) }}" alt="user-icon" class="user-icon">
+                            @else
+                                <img src="{{ asset('images/' . $randomIcon) }}" alt="user-icon" class="user-icon">
+                            @endif
                         </a>
 
-                        {{ $post->user->username }}
+                        <small class="postUserName">{{ $post->user->username }}</small>
 
                         <small class="post-days">{{ $post->created_at->format('Y-m-d H：i') }}</small>
                     </div>
 
-
-                    <p>{{ $post->post }}</p>
+                    <p class="post-detail">{{ $post->post }}</p>
 
                 </div>
 
